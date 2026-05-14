@@ -80,18 +80,17 @@
 
 <script>
 
-<script>
-
 const table =
 document.getElementById("adminPurchases");
 
-// Recorrer TODO localStorage
+// Recorrer localStorage
 
 for(let i = 0; i < localStorage.length; i++){
 
-  const key = localStorage.key(i);
+  const key =
+  localStorage.key(i);
 
-  // Ignorar configuraciones internas
+  // Ignorar claves internas
 
   if(
     key === "loggedUser" ||
@@ -100,33 +99,41 @@ for(let i = 0; i < localStorage.length; i++){
     continue;
   }
 
-  const user =
-  JSON.parse(localStorage.getItem(key));
+  try{
 
-  // Evitar errores
+    const user =
+    JSON.parse(localStorage.getItem(key));
 
-  if(
-    user &&
-    user.username &&
-    user.company &&
-    user.country
-  ){
+    // Verificar estructura
 
-    table.innerHTML += `
+    if(
+      user &&
+      user.username &&
+      user.company &&
+      user.country
+    ){
 
-      <tr>
+      table.innerHTML += `
 
-        <td>${user.username}</td>
+        <tr>
 
-        <td>${user.company}</td>
+          <td>${user.username}</td>
 
-        <td>${user.country}</td>
+          <td>${user.company}</td>
 
-        <td>${user.plan || "Ninguno"}</td>
+          <td>${user.country}</td>
 
-      </tr>
+          <td>${user.plan || "Ninguno"}</td>
 
-    `;
+        </tr>
+
+      `;
+
+    }
+
+  }catch(error){
+
+    console.log("Elemento ignorado");
 
   }
 

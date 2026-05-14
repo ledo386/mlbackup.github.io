@@ -926,3 +926,11 @@ footer a:hover{
 .checkbox-container input:checked + .checkmark::after {
   display: block;
 }
+
+.checkmark {
+  transition: 0.25s ease, transform 0.2s ease;
+}
+
+.checkbox-container input:checked + .checkmark {
+  transform: scale(1.05);
+}

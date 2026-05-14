@@ -42,7 +42,7 @@ function buyPlan(planName){
   // Confirmación
 
   let confirmMessage =
-  `¿Deseas contratar el plan ${planName}?`;
+  `¿Deseas contratar el ${planName}?`;
 
   // Si ya tiene uno
 
@@ -52,7 +52,7 @@ function buyPlan(planName){
   ){
 
     confirmMessage =
-    `Ya tienes contratado el plan ${user.plan}.\n\n¿Deseas cancelarlo y cambiar al plan ${planName}?`;
+    `Ya tienes contratado el ${user.plan}.\n\n¿Deseas cancelarlo y cambiar al ${planName}?`;
 
   }
 
@@ -75,7 +75,7 @@ function buyPlan(planName){
   );
 
   alert(
-    `Plan ${planName} contratado correctamente.`
+    `${planName} contratado correctamente.`
   );
 
 }
@@ -113,7 +113,7 @@ function cancelPlan(){
 
   const confirmed =
   confirm(
-    `¿Deseas cancelar el plan ${user.plan}?`
+    `¿Deseas cancelar el ${user.plan}?`
   );
 
   if(!confirmed){

@@ -3,13 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ML Backup</title>
+  <title>Registro</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
+  
   <button id="themeToggle">🌙</button>
-
+  
   <!-- NAVBAR -->
   <header>
     <div class="container nav">
@@ -21,7 +21,7 @@
       
             <img 
               id="siteLogo"
-              src="https://uploads.onecompiler.io/44njqmhst/44nk6frt5/MLBclaro.png
+              src="https://uploads.onecompiler.io/44njqmhst/44nk6frt5/MLBclaro.png"
               alt="ML Backup Logo"
               class="logo-img"
             >
@@ -34,11 +34,11 @@
 
       <nav class="navbar-right">
 
-        <a href="#inicio">Inicio</a>
-        <a href="#servicios">Servicios</a>
-        <a href="#planes">Planes</a>
-        <a href="#sobre">Sobre Nosotros</a>
-        <a href="#contacto">Contacto</a>
+        <a href="./index.html#inicio">Inicio</a>
+        <a href="./index.html#servicios">Servicios</a>
+        <a href="./index.html#planes">Planes</a>
+        <a href="./index.html#sobre">Sobre Nosotros</a>
+        <a href="./index.html#contacto">Contacto</a>
 
         <div id="userArea">
 
@@ -52,270 +52,124 @@
     </div>
   </header>
 
-  <!-- HERO -->
-  <section class="hero reveal" id="inicio">
-    <div class="container hero-content">
+<section class="login-page reveal">
 
-      <div class="hero-text">
-        <p class="tag">SEGURIDAD Y PROTECCIÓN DE DATOS</p>
+  <div class="login-box">
 
-        <h2>
-          Copias de seguridad inteligentes para empresas
-        </h2>
+    <h2>Crear cuenta</h2>
 
-        <p class="description">
-          ML Backup ofrece soluciones automatizadas de backup
-          para pequeñas y medianas empresas.
-          Protege tus datos frente a ransomware, fallos técnicos
-          y pérdidas de información.
-        </p>
+    <form id="registerForm">
 
-        <div class="buttons">
-          <a href="#planes" class="btn primary">Ver planes</a>
-          <a href="#contacto" class="btn secondary">Contactar</a>
-        </div>
+      <input type="text" id="registerUsername" placeholder="Usuario" required>
+
+      <div class="password-box">
+
+        <input 
+          type="password"
+          id="registerPassword"
+          placeholder="Contraseña"
+          required
+        >
+      
+        <span class="toggle-password" onclick="togglePassword('registerPassword', this)">
+          👁️
+        </span>
+      
       </div>
 
-      <div class="hero-card">
-        <div class="card">
-          <h3>Backup Automatizado</h3>
-          <p>Copias programadas sin intervención manual.</p>
-        </div>
-
-        <div class="card">
-          <h3>Seguridad Avanzada</h3>
-          <p>Cifrado AES-256 y sistemas redundantes.</p>
-        </div>
-
-        <div class="card">
-          <h3>Cloud + Local</h3>
-          <p>Infraestructura híbrida y recuperación rápida.</p>
-        </div>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- SERVICIOS -->
-  <section class="services reveal" id="servicios">
-
-    <div class="container">
-
-      <div class="section-title">
-        <p>SERVICIOS</p>
-        <h2>¿Qué ofrecemos?</h2>
-      </div>
-
-      <div class="services-grid">
-
-        <div class="service-box">
-          <h3>Copias Automáticas</h3>
-          <p>Automatización completa de backups empresariales.</p>
-        </div>
-
-        <div class="service-box">
-          <h3>Monitorización 24/7</h3>
-          <p>Supervisión continua del sistema.</p>
-        </div>
-
-        <div class="service-box">
-          <h3>Recuperación Rápida</h3>
-          <p>Restauración rápida frente a incidencias.</p>
-        </div>
-
-        <div class="service-box">
-          <h3>Infraestructura Híbrida</h3>
-          <p>Cloud + almacenamiento local.</p>
-        </div>
-
-        <div class="service-box">
-          <h3>Seguridad Empresarial</h3>
-          <p>Cifrado y control de accesos.</p>
-        </div>
-
-        <div class="service-box">
-          <h3>Soporte Técnico</h3>
-          <p>Asistencia personalizada para empresas.</p>
-        </div>
-
-      </div>
-
-    </div>
-
-  </section>
-
-  <!-- PLANES -->
-  <section class="plans reveal" id="planes">
-
-    <div class="container">
-
-      <div class="section-title">
-        <p>SUSCRIPCIONES</p>
-        <h2>Planes adaptados a tu empresa</h2>
-      </div>
-
-      <div class="plans-grid">
-
-        <div class="plan-card">
-          <h3>Plan Básico</h3>
-          <h4>79€/mes</h4>
-
-          <ul>
-            <li>100GB almacenamiento</li>
-            <li>Copias diarias</li>
-            <li>Soporte básico</li>
-            <li>Cifrado AES-256</li>
-          </ul>
-
-          <a href="./basic-plan.html">
-            <button>Contratar</button>
-          </a>
-        </div>
-
-        <div class="plan-card featured">
-          <span class="popular">Popular</span>
-
-          <h3>Plan Profesional</h3>
-          <h4>199€/mes</h4>
-
-          <ul>
-            <li>1TB almacenamiento</li>
-            <li>Monitorización 24/7</li>
-            <li>Backups avanzados</li>
-            <li>Recuperación rápida</li>
-          </ul>
-
-          <a href="./pro-plan.html">
-            <button>Contratar</button>
-          </a>
-        </div>
-
-        <div class="plan-card">
-          <h3>Plan Empresarial</h3>
-          <h4>499€/mes</h4>
-
-          <ul>
-            <li>Almacenamiento ilimitado</li>
-            <li>Infraestructura híbrida</li>
-            <li>Soporte prioritario</li>
-            <li>Seguridad avanzada</li>
-          </ul>
-
-          <a href="./enterprise-plan.html">
-            <button>Contratar</button>
-          </a>
-        </div>
-
-      </div>
-
-    </div>
-
-  </section>
-
-  <!-- SOBRE -->
-  <section class="about reveal" id="sobre">
-
-    <div class="container about-grid">
-
-      <div>
-        <p class="tag">SOBRE NOSOTROS</p>
-
-        <h2>Tecnología enfocada en la seguridad empresarial</h2>
-
-        <p>
-          ML Backup nace para ayudar a las pequeñas y medianas empresas
-          a proteger su información frente a amenazas digitales.
-        </p>
-      </div>
-
-      <div class="stats">
-
-        <div class="stat-box">
-          <h3>99.9%</h3>
-          <p>Disponibilidad</p>
-        </div>
-
-        <div class="stat-box">
-          <h3>24/7</h3>
-          <p>Monitorización</p>
-        </div>
-
-        <div class="stat-box">
-          <h3>AES-256</h3>
-          <p>Cifrado</p>
-        </div>
-
-        <div class="stat-box">
-          <h3>Cloud</h3>
-          <p>Infraestructura</p>
-        </div>
-
-      </div>
-
-    </div>
-
-  </section>
-
-  <!-- CONTACTO -->
-  <section class="contact reveal" id="contacto">
-
-    <div class="container contact-box">
-
-      <div class="section-title">
-        <p>CONTACTO</p>
-        <h2>Solicita información</h2>
-      </div>
-
-      <form id="contactForm">
-
-        <input type="text" placeholder="Nombre" required>
-
-        <input type="email" placeholder="Correo electrónico" required>
-
-        <input type="text" placeholder="Empresa (opcional)">
-
-        <textarea placeholder="Mensaje" required></textarea>
-
-        <button type="submit">Enviar mensaje</button>
-
-      </form>
-
-    </div>
-
-  </section>
-
-  <!-- FOOTER -->
-  <footer>
-
-    <div class="container footer-grid">
-
-      <div>
-        <h3>ML Backup</h3>
-        <p>Soluciones modernas de backup y ciberseguridad.</p>
-      </div>
-
-      <div>
-        <h4>Enlaces</h4>
-
-        <ul>
-          <a href="#inicio">Inicio</a><br>
-          <a href="#servicios">Servicios</a><br>
-          <a href="#planes">Planes</a>
-        </ul>
-      </div>
-
-      <div>
-        <h4>Contacto</h4>
-
-        <p>mlbackup@empresa.com</p>
-        <p>Madrid, España</p>
-      </div>
-
-    </div>
-
-  </footer>
-
-  <script src="script.js"></script>
+      <input type="text" id="registerCompany" placeholder="Empresa" required>
+
+      <select id="registerCountry" required>
+
+        <option value="" disabled selected>
+          Selecciona un país
+        </option>
+      
+        <option value="Afganistán">Afganistán</option>
+        <option value="Alemania">Alemania</option>
+        <option value="Arabia Saudita">Arabia Saudita</option>
+        <option value="Argentina">Argentina</option>
+        <option value="Australia">Australia</option>
+        <option value="Austria">Austria</option>
+        <option value="Bélgica">Bélgica</option>
+        <option value="Bolivia">Bolivia</option>
+        <option value="Brasil">Brasil</option>
+        <option value="Bulgaria">Bulgaria</option>
+        <option value="Canadá">Canadá</option>
+        <option value="Chile">Chile</option>
+        <option value="China">China</option>
+        <option value="Colombia">Colombia</option>
+        <option value="Corea del Sur">Corea del Sur</option>
+        <option value="Costa Rica">Costa Rica</option>
+        <option value="Croacia">Croacia</option>
+        <option value="Cuba">Cuba</option>
+        <option value="Dinamarca">Dinamarca</option>
+        <option value="Ecuador">Ecuador</option>
+        <option value="Egipto">Egipto</option>
+        <option value="El Salvador">El Salvador</option>
+        <option value="Emiratos Árabes Unidos">Emiratos Árabes Unidos</option>
+        <option value="España">España</option>
+        <option value="Estados Unidos">Estados Unidos</option>
+        <option value="Estonia">Estonia</option>
+        <option value="Filipinas">Filipinas</option>
+        <option value="Finlandia">Finlandia</option>
+        <option value="Francia">Francia</option>
+        <option value="Grecia">Grecia</option>
+        <option value="Guatemala">Guatemala</option>
+        <option value="Honduras">Honduras</option>
+        <option value="Hungría">Hungría</option>
+        <option value="India">India</option>
+        <option value="Indonesia">Indonesia</option>
+        <option value="Irlanda">Irlanda</option>
+        <option value="Islandia">Islandia</option>
+        <option value="Israel">Israel</option>
+        <option value="Italia">Italia</option>
+        <option value="Japón">Japón</option>
+        <option value="Luxemburgo">Luxemburgo</option>
+        <option value="Marruecos">Marruecos</option>
+        <option value="México">México</option>
+        <option value="Noruega">Noruega</option>
+        <option value="Nueva Zelanda">Nueva Zelanda</option>
+        <option value="Países Bajos">Países Bajos</option>
+        <option value="Panamá">Panamá</option>
+        <option value="Paraguay">Paraguay</option>
+        <option value="Perú">Perú</option>
+        <option value="Polonia">Polonia</option>
+        <option value="Portugal">Portugal</option>
+        <option value="Reino Unido">Reino Unido</option>
+        <option value="República Checa">República Checa</option>
+        <option value="República Dominicana">República Dominicana</option>
+        <option value="Rumanía">Rumanía</option>
+        <option value="Suecia">Suecia</option>
+        <option value="Suiza">Suiza</option>
+        <option value="Tailandia">Tailandia</option>
+        <option value="Turquía">Turquía</option>
+        <option value="Ucrania">Ucrania</option>
+        <option value="Uruguay">Uruguay</option>
+        <option value="Venezuela">Venezuela</option>
+      
+      </select>
+
+      <button type="submit">Registrarse</button>
+
+    </form>
+
+    <p class="register-link">
+
+      ¿Ya tienes cuenta?
+    
+      <a href="./login.html">
+        Iniciar sesión
+      </a>
+    
+    </p>
+
+  </div>
+
+</section>
+
+<script src="auth.js"></script>
+<script src="script.js"></script>
 
 </body>
 </html>

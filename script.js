@@ -255,8 +255,7 @@ function updateLogo(){
 
     // LOGO CLARO
 
-    siteLogo.src =
-    "logoMLBoscuro.png";
+    siteLogo.src = "logoMLBoscuro.png";
 
     // Ajuste visual
 
@@ -266,8 +265,7 @@ function updateLogo(){
 
     // LOGO OSCURO
 
-    siteLogo.src =
-    "logoMLBclaro.png";
+    siteLogo.src = "logoMLBclaro.png";
 
     // Tamaño normal
 
@@ -290,5 +288,30 @@ if(themeToggle){
     setTimeout(updateLogo, 50);
 
   });
+
+}
+
+// =========================
+// SHOW / HIDE PASSWORD
+// =========================
+
+function togglePassword(inputId, element){
+
+  const input =
+  document.getElementById(inputId);
+
+  if(input.type === "password"){
+
+    input.type = "text";
+
+    element.innerHTML = "👁";
+
+  }else{
+
+    input.type = "password";
+
+    element.innerHTML = "👁️";
+
+  }
 
 }

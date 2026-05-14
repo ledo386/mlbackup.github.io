@@ -80,24 +80,58 @@
 
 <script>
 
-const purchases = JSON.parse(localStorage.getItem("purchases")) || [];
+<script>
 
-const table = document.getElementById("adminPurchases");
+const table =
+document.getElementById("adminPurchases");
 
-purchases.forEach(purchase => {
+// Recorrer TODO localStorage
 
-  table.innerHTML += `
+for(let i = 0; i < localStorage.length; i++){
 
-    <tr>
-      <td>${purchase.username}</td>
-      <td>${purchase.company}</td>
-      <td>${purchase.country}</td>
-      <td>${purchase.plan}</td>
-    </tr>
+  const key = localStorage.key(i);
 
-  `;
+  // Ignorar configuraciones internas
 
-});
+  if(
+    key === "loggedUser" ||
+    key === "theme" ||
+    key === "purchases"
+  ){
+    continue;
+  }
+
+  const user =
+  JSON.parse(localStorage.getItem(key));
+
+  // Evitar errores
+
+  if(
+    user &&
+    user.username &&
+    user.company &&
+    user.country
+  ){
+
+    table.innerHTML += `
+
+      <tr>
+
+        <td>${user.username}</td>
+
+        <td>${user.company}</td>
+
+        <td>${user.country}</td>
+
+        <td>${user.plan || "Ninguno"}</td>
+
+      </tr>
+
+    `;
+
+  }
+
+}
 
 </script>
 

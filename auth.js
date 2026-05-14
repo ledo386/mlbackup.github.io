@@ -2,7 +2,8 @@
 // REGISTRO
 // ====================
 
-const registerForm = document.getElementById("registerForm");
+const registerForm =
+document.getElementById("registerForm");
 
 if(registerForm){
 
@@ -10,10 +11,22 @@ if(registerForm){
 
     e.preventDefault();
 
+    const username =
+    document.getElementById("registerUsername").value;
+
+    // Verificar si ya existe
+
+    if(localStorage.getItem(username)){
+
+      alert("Ese usuario ya existe.");
+
+      return;
+
+    }
+
     const user = {
 
-      username:
-      document.getElementById("registerUsername").value,
+      username: username,
 
       password:
       document.getElementById("registerPassword").value,
@@ -24,18 +37,19 @@ if(registerForm){
       country:
       document.getElementById("registerCountry").value,
 
-      plan:null
+      plan:"Ninguno"
 
     };
 
     localStorage.setItem(
-      user.username,
+      username,
       JSON.stringify(user)
     );
 
     alert("Cuenta creada correctamente.");
 
-    window.location.href = "login.html";
+    window.location.href =
+    "./login.html";
 
   });
 

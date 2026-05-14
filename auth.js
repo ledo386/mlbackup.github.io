@@ -1,293 +1,101 @@
-const form = document.getElementById("contactForm");
+// ====================
+// REGISTRO
+// ====================
 
-if(form){
+const registerForm = document.getElementById("registerForm");
 
-  form.addEventListener("submit", function(e){
+if(registerForm){
+
+  registerForm.addEventListener("submit", function(e){
 
     e.preventDefault();
 
-    alert("Mensaje enviado correctamente.");
+    const user = {
 
-    form.reset();
+      username:
+      document.getElementById("registerUsername").value,
+
+      password:
+      document.getElementById("registerPassword").value,
+
+      company:
+      document.getElementById("registerCompany").value,
+
+      country:
+      document.getElementById("registerCountry").value,
+
+      plan:null
+
+    };
+
+    localStorage.setItem(
+      user.username,
+      JSON.stringify(user)
+    );
+
+    alert("Cuenta creada correctamente.");
+
+    window.location.href = "login.html";
 
   });
 
 }
 
-// =========================
-// DARK MODE
-// =========================
+// ====================
+// LOGIN
+// ====================
 
-const themeToggle =
-document.getElementById("themeToggle");
+const loginForm = document.getElementById("loginForm");
 
-// CARGAR TEMA GUARDADO
+if(loginForm){
 
-const savedTheme =
-localStorage.getItem("theme");
+  loginForm.addEventListener("submit", function(e){
 
-if(savedTheme === "dark"){
+    e.preventDefault();
 
-  document.body.classList.add("dark");
+    const username =
+    document.getElementById("loginUsername").value;
 
-  if(themeToggle){
-    themeToggle.innerHTML = "☀️";
-  }
+    const password =
+    document.getElementById("loginPassword").value;
 
-}else{
+    // ADMIN
 
-  if(themeToggle){
-    themeToggle.innerHTML = "🌙";
-  }
+    if(
+      username === "admin" &&
+      password === "Admin123!"
+    ){
 
-}
+      localStorage.setItem(
+        "loggedUser",
+        "admin"
+      );
 
-// CAMBIAR TEMA
+      window.location.href = "admin.html";
 
-if(themeToggle){
+      return;
 
-  themeToggle.addEventListener("click", () => {
+    }
 
-    document.body.classList.toggle("dark");
+    const user =
+    JSON.parse(localStorage.getItem(username));
 
-    // GUARDAR
+    if(user && user.password === password){
 
-    if(document.body.classList.contains("dark")){
+      localStorage.setItem(
+        "loggedUser",
+        username
+      );
 
-      localStorage.setItem("theme", "dark");
+      alert("Inicio de sesión correcto.");
 
-      themeToggle.innerHTML = "☀️";
+      window.location.href = "index.html";
 
     }else{
 
-      localStorage.setItem("theme", "light");
-
-      themeToggle.innerHTML = "🌙";
+      alert("Usuario o contraseña incorrectos.");
 
     }
-
-  });
-
-}
-
-/* SCROLL ANIMATIONS */
-
-const reveals = document.querySelectorAll(".reveal");
-
-function revealOnScroll(){
-
-  reveals.forEach((element) => {
-
-    const windowHeight = window.innerHeight;
-
-    const revealTop = element.getBoundingClientRect().top;
-
-    const revealPoint = 100;
-
-    if(revealTop < windowHeight - revealPoint){
-
-      element.classList.add("active");
-
-    }
-
-  });
-
-}
-
-window.addEventListener("scroll", revealOnScroll);
-
-revealOnScroll();
-
-// =========================
-// USER MENU
-// =========================
-
-const userArea =
-document.getElementById("userArea");
-
-const loggedUser =
-localStorage.getItem("loggedUser");
-
-if(userArea && loggedUser){
-
-  let adminButton = "";
-
-  if(loggedUser === "admin"){
-
-    adminButton = `
-      <a href="admin.html">
-        Panel admin
-      </a>
-    `;
-
-  }
-
-  userArea.innerHTML = `
-
-    <div class="user-menu">
-
-      <div class="user-profile">
-
-        <span>👤</span>
-
-        <span>${loggedUser}</span>
-
-      </div>
-
-      <div class="user-dropdown">
-
-        ${adminButton}
-
-        <button onclick="logout()">
-          Cerrar sesión
-        </button>
-
-      </div>
-
-    </div>
-
-  `;
-
-}
-
-function logout(){
-
-  localStorage.removeItem("loggedUser");
-
-  alert("Sesión cerrada.");
-
-  window.location.href = "index.html";
-
-}
-
-// =========================
-// SMOOTH SCROLL NAVBAR
-// =========================
-
-document.querySelectorAll('a[href*="#"]').forEach(anchor => {
-
-  anchor.addEventListener("click", function(e){
-
-    const href = this.getAttribute("href");
-
-    // Solo si estamos YA en index
-
-    if(
-      window.location.pathname.includes("index.html") ||
-      window.location.pathname === "/"
-    ){
-
-      const targetId = href.split("#")[1];
-
-      const target =
-      document.getElementById(targetId);
-
-      if(target){
-
-        e.preventDefault();
-
-        target.scrollIntoView({
-          behavior:"smooth"
-        });
-
-      }
-
-    }
-
-  });
-
-});
-
-// =========================
-// SMOOTH SCROLL BETWEEN PAGES
-// =========================
-
-window.addEventListener("load", () => {
-
-  // Si hay hash (#servicios etc)
-
-  if(window.location.hash){
-
-    // Obtener id sin #
-
-    const targetId =
-    window.location.hash.substring(1);
-
-    // Buscar elemento
-
-    const target =
-    document.getElementById(targetId);
-
-    if(target){
-
-      // Subir arriba primero
-
-      window.scrollTo(0,0);
-
-      // Esperar un poco para evitar salto automático
-
-      setTimeout(() => {
-
-        target.scrollIntoView({
-          behavior:"smooth",
-          block:"start"
-        });
-
-      }, 200);
-
-    }
-
-  }
-
-});
-// =========================
-// LOGO DINÁMICO
-// =========================
-
-const siteLogo =
-document.getElementById("siteLogo");
-
-function updateLogo(){
-
-  if(!siteLogo) return;
-
-  if(document.body.classList.contains("dark")){
-
-    // LOGO CLARO
-
-    siteLogo.src =
-    "https://uploads.onecompiler.io/44njqmhst/44nk6frt5/MLBoscuro.png";
-
-    // Ajuste visual
-
-    siteLogo.style.transform = "scale(1)";
-
-  }else{
-
-    // LOGO OSCURO
-
-    siteLogo.src =
-    "https://uploads.onecompiler.io/44njqmhst/44nk6frt5/MLBclaro.png";
-
-    // Tamaño normal
-
-    siteLogo.style.transform = "scale(1)";
-
-  }
-
-}
-
-// Ejecutar al cargar
-
-updateLogo();
-
-// Ejecutar al cambiar tema
-
-if(themeToggle){
-
-  themeToggle.addEventListener("click", () => {
-
-    setTimeout(updateLogo, 50);
 
   });
 

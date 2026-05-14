@@ -1,50 +1,132 @@
+// =========================
+// COMPRA DE PLANES
+// =========================
+
 function buyPlan(planName){
 
-  const loggedUser = localStorage.getItem("loggedUser");
+  // Usuario conectado
+
+  const loggedUser =
+  localStorage.getItem("loggedUser");
 
   if(!loggedUser){
 
-    alert("Debes iniciar sesión para comprar un plan.");
+    alert(
+      "Debes iniciar sesión para contratar un plan."
+    );
 
-    window.location.href = "login.html";
+    window.location.href =
+    "./login.html";
 
     return;
 
   }
+
+  // Admin no puede comprar
 
   if(loggedUser === "admin"){
 
-    alert("El administrador no puede comprar planes.");
+    alert(
+      "La cuenta de administrador no puede contratar planes."
+    );
 
     return;
 
   }
 
-  let user = JSON.parse(localStorage.getItem(loggedUser));
+  // Obtener usuario
 
-  if(user.plan){
+  const user =
+  JSON.parse(localStorage.getItem(loggedUser));
 
-    alert("Ya tienes un plan contratado.");
+  // Confirmación
 
-    return;
+  let confirmMessage =
+  `¿Deseas contratar el plan ${planName}?`;
+
+  // Si ya tiene uno
+
+  if(
+    user.plan &&
+    user.plan !== "Ninguno"
+  ){
+
+    confirmMessage =
+    `Ya tienes contratado el plan ${user.plan}.\n\n¿Deseas cancelarlo y cambiar al plan ${planName}?`;
 
   }
+
+  const confirmed =
+  confirm(confirmMessage);
+
+  if(!confirmed){
+    return;
+  }
+
+  // Actualizar plan
 
   user.plan = planName;
 
-  localStorage.setItem(loggedUser, JSON.stringify(user));
+  // Guardar usuario actualizado
 
-  let purchases = JSON.parse(localStorage.getItem("purchases")) || [];
+  localStorage.setItem(
+    loggedUser,
+    JSON.stringify(user)
+  );
 
-  purchases.push({
-    username: user.username,
-    company: user.company,
-    country: user.country,
-    plan: planName
-  });
+  alert(
+    `Plan ${planName} contratado correctamente.`
+  );
 
-  localStorage.setItem("purchases", JSON.stringify(purchases));
+}
 
-  alert("Plan comprado correctamente.");
+// =========================
+// CANCELAR PLAN
+// =========================
+
+function cancelPlan(){
+
+  const loggedUser =
+  localStorage.getItem("loggedUser");
+
+  if(!loggedUser){
+
+    alert("Debes iniciar sesión.");
+
+    return;
+
+  }
+
+  const user =
+  JSON.parse(localStorage.getItem(loggedUser));
+
+  if(
+    !user.plan ||
+    user.plan === "Ninguno"
+  ){
+
+    alert("No tienes ningún plan contratado.");
+
+    return;
+
+  }
+
+  const confirmed =
+  confirm(
+    `¿Deseas cancelar el plan ${user.plan}?`
+  );
+
+  if(!confirmed){
+    return;
+  }
+
+  user.plan = "Ninguno";
+
+  localStorage.setItem(
+    loggedUser,
+    JSON.stringify(user)
+  );
+
+  alert("Plan cancelado correctamente.");
 
 }

@@ -16,29 +16,29 @@
       <h1>
 
         <a href="./index.html" class="logo">
-      
+
           <div class="logo-container">
-      
+
             <img 
               id="siteLogo"
               src="https://uploads.onecompiler.io/44njqmhst/44nk6frt5/MLBclaro.png"
               alt="ML Backup Logo"
               class="logo-img"
             >
-      
+
           </div>
-      
+
         </a>
-      
+
       </h1>
 
       <nav class="navbar-right">
 
-        <a href="#inicio">Inicio</a>
-        <a href="#servicios">Servicios</a>
-        <a href="#planes">Planes</a>
-        <a href="#sobre">Sobre Nosotros</a>
-        <a href="#contacto">Contacto</a>
+        <a href="./index.html#inicio">Inicio</a>
+        <a href="./index.html#servicios">Servicios</a>
+        <a href="./index.html#planes">Planes</a>
+        <a href="./index.html#sobre">Sobre Nosotros</a>
+        <a href="./index.html#contacto">Contacto</a>
 
         <div id="userArea">
 
@@ -47,7 +47,7 @@
           </a>
 
         </div>
-      
+
       </nav>
     </div>
   </header>
@@ -62,20 +62,33 @@
 
       <input type="text" id="loginUsername" placeholder="Usuario" required>
 
-      <input type="password" id="loginPassword" placeholder="Contraseña" required>
+      <div class="password-box">
 
-      <button type="submit">Entrar</button>
+        <input 
+          type="password"
+          id="loginPassword"
+          placeholder="Contraseña"
+          required
+        >
+
+        <span class="toggle-password" onclick="togglePassword('loginPassword', this)">
+          👁️
+        </span>
+      
+      </div>
+
+      <button type="submit">Iniciar sesión</button>
 
     </form>
 
     <p class="register-link">
 
       ¿No tienes cuenta?
-    
+
       <a href="./register.html">
         Registrarse
       </a>
-    
+
     </p>
 
     <div class="admin-info">

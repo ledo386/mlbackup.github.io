@@ -3,13 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ML Backup</title>
+  <title>Plan Profesional</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
+  
   <button id="themeToggle">🌙</button>
-
+  
   <!-- NAVBAR -->
   <header>
     <div class="container nav">
@@ -21,7 +21,7 @@
       
             <img 
               id="siteLogo"
-              src="https://uploads.onecompiler.io/44njqmhst/44nk6frt5/MLBclaro.png
+              src="https://uploads.onecompiler.io/44njqmhst/44nk6frt5/MLBclaro.png"
               alt="ML Backup Logo"
               class="logo-img"
             >
@@ -34,11 +34,11 @@
 
       <nav class="navbar-right">
 
-        <a href="#inicio">Inicio</a>
-        <a href="#servicios">Servicios</a>
-        <a href="#planes">Planes</a>
-        <a href="#sobre">Sobre Nosotros</a>
-        <a href="#contacto">Contacto</a>
+        <a href="./index.html#inicio">Inicio</a>
+        <a href="./index.html#servicios">Servicios</a>
+        <a href="./index.html#planes">Planes</a>
+        <a href="./index.html#sobre">Sobre Nosotros</a>
+        <a href="./index.html#contacto">Contacto</a>
 
         <div id="userArea">
 
@@ -52,157 +52,72 @@
     </div>
   </header>
 
-  <!-- HERO -->
-  <section class="hero reveal" id="inicio">
-    <div class="container hero-content">
+<section class="plan-page reveal">
 
-      <div class="hero-text">
-        <p class="tag">SEGURIDAD Y PROTECCIÓN DE DATOS</p>
+  <div class="container">
 
-        <h2>
-          Copias de seguridad inteligentes para empresas
-        </h2>
+    <div class="single-plan-card pro">
 
-        <p class="description">
-          ML Backup ofrece soluciones automatizadas de backup
-          para pequeñas y medianas empresas.
-          Protege tus datos frente a ransomware, fallos técnicos
-          y pérdidas de información.
-        </p>
+      <h1>Plan Profesional</h1>
 
-        <div class="buttons">
-          <a href="#planes" class="btn primary">Ver planes</a>
-          <a href="#contacto" class="btn secondary">Contactar</a>
-        </div>
-      </div>
+      <h2>199€/mes</h2>
 
-      <div class="hero-card">
-        <div class="card">
-          <h3>Backup Automatizado</h3>
-          <p>Copias programadas sin intervención manual.</p>
-        </div>
+      <p>
+        Diseñado para pequeñas y medianas empresas que 
+        necesitan un sistema de protección de datos más 
+        avanzado, con mayor capacidad de almacenamiento, 
+        monitorización constante y recuperación rápida ante 
+        incidentes o ciberataques.
 
-        <div class="card">
-          <h3>Seguridad Avanzada</h3>
-          <p>Cifrado AES-256 y sistemas redundantes.</p>
-        </div>
+        Este plan ofrece una solución completa orientada 
+        a negocios que dependen diariamente de su 
+        infraestructura digital y requieren un nivel 
+        superior de seguridad, automatización y disponibilidad.
+        Además, incorpora protección frente a ransomware y 
+        soporte prioritario para garantizar la continuidad 
+        empresarial en todo momento.
+      </p>
 
-        <div class="card">
-          <h3>Cloud + Local</h3>
-          <p>Infraestructura híbrida y recuperación rápida.</p>
-        </div>
-      </div>
+      <ul>
+        <li>2TB de almacenamiento seguro</li>
+        <li>Backups automáticos avanzados</li>
+        <li>Monitorización 24/7</li>
+        <li>Protección frente a ransomware</li>
+        <li>Recuperación rápida de archivos</li>
+        <li>Cifrado AES-256</li>
+        <li>Notificaciones automáticas de incidencias</li>
+        <li>Soporte técnico prioritario</li>
+        <li>Infraestructura híbrida cloud + local</li>
+        <li>Panel de gestión empresarial</li>
+      </ul>
 
-    </div>
-  </section>
-
-  <!-- SERVICIOS -->
-  <section class="services reveal" id="servicios">
-
-    <div class="container">
-
-      <div class="section-title">
-        <p>SERVICIOS</p>
-        <h2>¿Qué ofrecemos?</h2>
-      </div>
-
-      <div class="services-grid">
-
-        <div class="service-box">
-          <h3>Copias Automáticas</h3>
-          <p>Automatización completa de backups empresariales.</p>
-        </div>
-
-        <div class="service-box">
-          <h3>Monitorización 24/7</h3>
-          <p>Supervisión continua del sistema.</p>
-        </div>
-
-        <div class="service-box">
-          <h3>Recuperación Rápida</h3>
-          <p>Restauración rápida frente a incidencias.</p>
-        </div>
-
-        <div class="service-box">
-          <h3>Infraestructura Híbrida</h3>
-          <p>Cloud + almacenamiento local.</p>
-        </div>
-
-        <div class="service-box">
-          <h3>Seguridad Empresarial</h3>
-          <p>Cifrado y control de accesos.</p>
-        </div>
-
-        <div class="service-box">
-          <h3>Soporte Técnico</h3>
-          <p>Asistencia personalizada para empresas.</p>
-        </div>
-
-      </div>
+      <button class="plan-button" onclick="buyPlan('Plan Profesional')">
+        Contratar plan
+      </button>
 
     </div>
 
-  </section>
+    <div class="other-plans">
 
-  <!-- PLANES -->
-  <section class="plans reveal" id="planes">
+      <h3>Otros planes</h3>
 
-    <div class="container">
+      <div class="mini-plans">
 
-      <div class="section-title">
-        <p>SUSCRIPCIONES</p>
-        <h2>Planes adaptados a tu empresa</h2>
-      </div>
-
-      <div class="plans-grid">
-
-        <div class="plan-card">
-          <h3>Plan Básico</h3>
-          <h4>79€/mes</h4>
-
-          <ul>
-            <li>100GB almacenamiento</li>
-            <li>Copias diarias</li>
-            <li>Soporte básico</li>
-            <li>Cifrado AES-256</li>
-          </ul>
-
+        <div class="mini-plan">
+          <h4>Básico</h4>
           <a href="./basic-plan.html">
-            <button>Contratar</button>
+            <button class="plan-button">
+              Ver plan
+            </button>
           </a>
         </div>
 
-        <div class="plan-card featured">
-          <span class="popular">Popular</span>
-
-          <h3>Plan Profesional</h3>
-          <h4>199€/mes</h4>
-
-          <ul>
-            <li>1TB almacenamiento</li>
-            <li>Monitorización 24/7</li>
-            <li>Backups avanzados</li>
-            <li>Recuperación rápida</li>
-          </ul>
-
-          <a href="./pro-plan.html">
-            <button>Contratar</button>
-          </a>
-        </div>
-
-        <div class="plan-card">
-          <h3>Plan Empresarial</h3>
-          <h4>499€/mes</h4>
-
-          <ul>
-            <li>Almacenamiento ilimitado</li>
-            <li>Infraestructura híbrida</li>
-            <li>Soporte prioritario</li>
-            <li>Seguridad avanzada</li>
-          </ul>
-
+        <div class="mini-plan">
+          <h4>Empresarial</h4>
           <a href="./enterprise-plan.html">
-            <button>Contratar</button>
+            <button class="plan-button">
+              Ver plan
+            </button>
           </a>
         </div>
 
@@ -210,112 +125,12 @@
 
     </div>
 
-  </section>
+  </div>
 
-  <!-- SOBRE -->
-  <section class="about reveal" id="sobre">
+</section>
 
-    <div class="container about-grid">
-
-      <div>
-        <p class="tag">SOBRE NOSOTROS</p>
-
-        <h2>Tecnología enfocada en la seguridad empresarial</h2>
-
-        <p>
-          ML Backup nace para ayudar a las pequeñas y medianas empresas
-          a proteger su información frente a amenazas digitales.
-        </p>
-      </div>
-
-      <div class="stats">
-
-        <div class="stat-box">
-          <h3>99.9%</h3>
-          <p>Disponibilidad</p>
-        </div>
-
-        <div class="stat-box">
-          <h3>24/7</h3>
-          <p>Monitorización</p>
-        </div>
-
-        <div class="stat-box">
-          <h3>AES-256</h3>
-          <p>Cifrado</p>
-        </div>
-
-        <div class="stat-box">
-          <h3>Cloud</h3>
-          <p>Infraestructura</p>
-        </div>
-
-      </div>
-
-    </div>
-
-  </section>
-
-  <!-- CONTACTO -->
-  <section class="contact reveal" id="contacto">
-
-    <div class="container contact-box">
-
-      <div class="section-title">
-        <p>CONTACTO</p>
-        <h2>Solicita información</h2>
-      </div>
-
-      <form id="contactForm">
-
-        <input type="text" placeholder="Nombre" required>
-
-        <input type="email" placeholder="Correo electrónico" required>
-
-        <input type="text" placeholder="Empresa (opcional)">
-
-        <textarea placeholder="Mensaje" required></textarea>
-
-        <button type="submit">Enviar mensaje</button>
-
-      </form>
-
-    </div>
-
-  </section>
-
-  <!-- FOOTER -->
-  <footer>
-
-    <div class="container footer-grid">
-
-      <div>
-        <h3>ML Backup</h3>
-        <p>Soluciones modernas de backup y ciberseguridad.</p>
-      </div>
-
-      <div>
-        <h4>Enlaces</h4>
-
-        <ul>
-          <a href="#inicio">Inicio</a><br>
-          <a href="#servicios">Servicios</a><br>
-          <a href="#planes">Planes</a>
-        </ul>
-      </div>
-
-      <div>
-        <h4>Contacto</h4>
-
-        <p>mlbackup@empresa.com</p>
-        <p>Madrid, España</p>
-      </div>
-
-    </div>
-
-  </footer>
-
-  <script src="script.js"></script>
+<script src="plans.js"></script>
+<script src="script.js"></script>
 
 </body>
 </html>

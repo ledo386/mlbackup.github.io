@@ -934,3 +934,6 @@ footer a:hover{
 .checkbox-container input:checked + .checkmark {
   transform: scale(1.05);
 }
+
+li{
+  padding: left(5)

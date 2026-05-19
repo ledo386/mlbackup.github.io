@@ -464,6 +464,7 @@ form button:hover{
 
 .single-plan-card li{
   margin-bottom:15px;
+  margin-left:15px;
 }
 
 .other-plans{
@@ -933,8 +934,4 @@ footer a:hover{
 
 .checkbox-container input:checked + .checkmark {
   transform: scale(1.05);
-}
-
-li {
-    margin-left: 20px;
 }

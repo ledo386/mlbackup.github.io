@@ -103,7 +103,7 @@ if(loginForm){
 
       alert("Inicio de sesión correcto.");
 
-      window.location.href = "index.html";
+      window.location.href = "client-dashboard.html";
 
     }else{
 

@@ -1,149 +1,151 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Cliente</title>
-  <link rel="stylesheet" href="style.css">
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>ML Backup | Panel Cliente</title>
+
+<link rel="stylesheet" href="./style.css">
+
 </head>
+
 <body>
-  
-  <button id="themeToggle">🌙</button>
-  
-  <!-- NAVBAR -->
-  <header>
-    <div class="container nav">
-      <h1>
 
-        <a href="./index.html" class="logo">
-      
-          <div class="logo-container">
-      
-            <img 
-              id="siteLogo"
-              src="logoMLBclaro.png"
-              alt="ML Backup Logo"
-              class="logo-img"
-            >
-      
-          </div>
-      
-        </a>
-      
-      </h1>
+<button id="themeToggle">🌙</button>
 
-      <nav class="navbar-right">
+<header>
 
-        <a href="./index.html#inicio">Inicio</a>
-        <a href="./index.html#servicios">Servicios</a>
-        <a href="./index.html#planes">Planes</a>
-        <a href="./index.html#sobre">Sobre Nosotros</a>
-        <a href="./index.html#contacto">Contacto</a>
+<div class="container nav">
 
-        <div id="userArea">
+<a href="./index.html" class="logo">
 
-          <a href="./login.html" id="loginButton" class="login-btn">
-            Iniciar sesión
-          </a>
+<img
+id="siteLogo"
+src="./logoMLBoscuro.png"
+class="logo-img"
+>
 
-        </div>
-      
-      </nav>
-    </div>
-  </header>
+</a>
 
-  <section class="admin-page reveal">
-  
-    <div class="container">
-  
-      <h1>Panel de administrador</h1>
-  
-      <table>
-  
-        <thead>
-          <tr>
-            <th>Usuario</th>
-            <th>Empresa</th>
-            <th>País</th>
-            <th>Plan</th>
-          </tr>
-        </thead>
-  
-        <tbody id="adminPurchases">
-        </tbody>
-  
-      </table>
-      
-      <table>
-      
-        <thead>
-        
-          <tr>
-          
-            <th>Fecha</th>
-            <th>Tipo</th>
-            <th>Estado</th>
-            <th>Tamaño</th>
-          
-          </tr>
-        
-        </thead>
-      
-        <tbody id="historyTable"></tbody>
-      
-      </table>
-      
-      <div id="alertsContainer"></div>
-  
-    </div>
-  
-  </section>
+<nav class="navbar-right">
 
-  <script>
+<a href="./index.html">Inicio</a>
 
-    const loggedUser =
-    localStorage.getItem("loggedUser");
-    
-    if(!loggedUser){
-    
-      window.location.href =
-      "./login.html";
-    
-    }
-    
-    if(loggedUser === "admin"){
-    
-      window.location.href =
-      "./admin.html";
-    
-    }
-    
-    const user =
-    JSON.parse(
-      localStorage.getItem(loggedUser)
-    );
-    
-    if(
-      !user.plan ||
-      user.plan === "Ninguno"
-    ){
-    
-      alert(
-        "Debes contratar un plan."
-      );
-    
-      window.location.href =
-      "./index.html#planes";
-    
-    }
+</nav>
 
-  </script>
-  
-  <script src="./auth.js"></script>
-  <script src="./script.js"></script>
-  <script src="./backup-system.js"></script>
-  <script src="./monitor.js"></script>
-  <script src="./dashboard.js"></script>
+</div>
+
+</header>
+
+<section class="dashboard-page">
+
+<div class="container">
+
+<h1 class="dashboard-title">
+
+Panel Cliente
+
+</h1>
+
+<div class="dashboard-grid">
+
+<div class="dashboard-card">
+
+<h2>Estado del Sistema</h2>
+
+<p class="system-ok">
+Sistema funcionando correctamente
+</p>
+
+</div>
+
+<div class="dashboard-card">
+
+<h2>Alertas</h2>
+
+<div id="alertsContainer"></div>
+
+</div>
+
+</div>
+
+<div class="dashboard-card">
+
+<h2>Historial</h2>
+
+<table>
+
+<thead>
+
+<tr>
+
+<th>Fecha</th>
+<th>Tipo</th>
+<th>Estado</th>
+<th>Tamaño</th>
+
+</tr>
+
+</thead>
+
+<tbody id="historyTable"></tbody>
+
+</table>
+
+</div>
+
+</div>
+
+</section>
+
+<script>
+
+const loggedUser =
+localStorage.getItem("loggedUser");
+
+if(!loggedUser){
+
+window.location.href =
+"./login.html";
+
+}
+
+if(loggedUser === "admin"){
+
+window.location.href =
+"./admin.html";
+
+}
+
+const user =
+JSON.parse(
+localStorage.getItem(loggedUser)
+);
+
+if(
+!user.plan ||
+user.plan === "Ninguno"
+){
+
+alert(
+"Debes contratar un plan."
+);
+
+window.location.href =
+"./index.html#planes";
+
+}
+
+</script>
+
+<script src="./script.js"></script>
+<script src="./monitor.js"></script>
+<script src="./dashboard.js"></script>
 
 </body>
+
 </html>

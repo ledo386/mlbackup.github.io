@@ -1,3 +1,5 @@
+const currentUser = localStorage.getItem("loggedUser");
+
 // ==========================
 // BACKUP MANUAL
 // ==========================
@@ -6,7 +8,7 @@ function runBackup(){
 
   const backups =
   JSON.parse(
-    localStorage.getItem("backups")
+    localStorage.getItem("backups_" + currentUser)
   ) || [];
 
   const newBackup = {
@@ -27,7 +29,7 @@ function runBackup(){
   backups.push(newBackup);
 
   localStorage.setItem(
-    "backups",
+    "backups_" + currentUser,
     JSON.stringify(backups)
   );
 
@@ -51,7 +53,7 @@ function automaticBackup(){
 
   const backups =
   JSON.parse(
-    localStorage.getItem("backups")
+    localStorage.getItem("backups_" + currentUser)
   ) || [];
 
   backups.push({
@@ -70,7 +72,7 @@ function automaticBackup(){
   });
 
   localStorage.setItem(
-    "backups",
+    "backups_" + currentUser,
     JSON.stringify(backups)
   );
 
@@ -96,7 +98,7 @@ function restoreBackup(){
 
   const restores =
   JSON.parse(
-    localStorage.getItem("restores")
+    localStorage.getItem("restores_" + currentUser)
   ) || [];
 
   restores.push({
@@ -110,7 +112,7 @@ function restoreBackup(){
   });
 
   localStorage.setItem(
-    "restores",
+    "restores_" + currentUser,
     JSON.stringify(restores)
   );
 

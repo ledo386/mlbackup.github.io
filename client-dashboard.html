@@ -99,6 +99,46 @@
   
   </section>
 
+  <script>
+
+    const loggedUser =
+    localStorage.getItem("loggedUser");
+    
+    if(!loggedUser){
+    
+      window.location.href =
+      "./login.html";
+    
+    }
+    
+    if(loggedUser === "admin"){
+    
+      window.location.href =
+      "./admin.html";
+    
+    }
+    
+    const user =
+    JSON.parse(
+      localStorage.getItem(loggedUser)
+    );
+    
+    if(
+      !user.plan ||
+      user.plan === "Ninguno"
+    ){
+    
+      alert(
+        "Debes contratar un plan."
+      );
+    
+      window.location.href =
+      "./index.html#planes";
+    
+    }
+
+  </script>
+  
   <script src="./auth.js"></script>
   <script src="./script.js"></script>
   <script src="./backup-system.js"></script>

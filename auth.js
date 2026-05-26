@@ -94,16 +94,41 @@ if(loginForm){
     const user =
     JSON.parse(localStorage.getItem(username));
 
-    if(user && user.password === password){
+if(user && user.password === password){
 
-      localStorage.setItem(
-        "loggedUser",
-        username
-      );
+  localStorage.setItem(
+    "loggedUser",
+    username
+  );
 
-      alert("Inicio de sesión correcto.");
+  alert("Inicio de sesión correcto.");
 
-      window.location.href = "client-dashboard.html";
+  // Verificar plan
+
+  if(
+    user.plan &&
+    user.plan !== "Ninguno"
+  ){
+
+    // Usuario con plan
+
+    window.location.href =
+    "client-dashboard.html";
+
+  }else{
+
+    // Usuario SIN plan
+
+    alert(
+      "Debes contratar un plan para acceder al panel."
+    );
+
+    window.location.href =
+    "index.html#planes";
+
+  }
+
+}
 
     }else{
 

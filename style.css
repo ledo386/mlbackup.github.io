@@ -782,7 +782,9 @@ footer a:hover{
 }
 
 .sec-button{
+  display:block;
   width:75%;
+  margin:0 auto;
   padding:18px;
   border:none;
   border-radius:18px;
@@ -792,9 +794,9 @@ footer a:hover{
   font-weight:bold;
   cursor:pointer;
   transition:
-  transform 0.3s ease,
-  background 0.3s ease,
-  box-shadow 0.3s ease;
+    transform 0.3s ease,
+    background 0.3s ease,
+    box-shadow 0.3s ease;
 }
 
 .sec-button:hover{

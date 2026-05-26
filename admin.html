@@ -52,135 +52,55 @@
     </div>
   </header>
 
-  <section class="admin-page reveal">
-  
-    <div class="container">
-  
-      <h1>Panel de administrador</h1>
-  
-      <table>
-  
-        <thead>
-          <tr>
-            <th>Usuario</th>
-            <th>Empresa</th>
-            <th>País</th>
-            <th>Plan</th>
-          </tr>
-        </thead>
-  
-        <tbody id="adminPurchases">
-        </tbody>
-  
-      </table>
-  
-      <button onclick="runBackup()">
-        Ejecutar copia manual
-      </button>
-      
-      <button onclick="restoreBackup()">
-        Restaurar última copia
-      </button>
-      
-      <table>
-      
-        <thead>
-        
-          <tr>
-          
-            <th>Fecha</th>
-            <th>Tipo</th>
-            <th>Estado</th>
-            <th>Tamaño</th>
-          
-          </tr>
-        
-        </thead>
-      
-        <tbody id="historyTable"></tbody>
-      
-      </table>
-      
-      <div id="alertsContainer"></div>
-  
-    </div>
-  
-  </section>
+<section class="dashboard-page">
+
+<div class="container">
+
+<h1 class="dashboard-title">
+Panel de Administración
+</h1>
+
+<div class="dashboard-card">
+
+<h2>Clientes Registrados</h2>
+
+<table>
+
+<thead>
+
+<tr>
+
+<th>Usuario</th>
+<th>Empresa</th>
+<th>País</th>
+<th>Plan</th>
+<th>Acciones</th>
+
+</tr>
+
+</thead>
+
+<tbody id="usersTable"></tbody>
+
+</table>
+
+</div>
+
+</div>
+
+</section>
 
 <script>
-  
-const table =
-document.getElementById("adminPurchases");
 
-// Recorrer localStorage
+const loggedUser =
+localStorage.getItem("loggedUser");
 
-for(let i = 0; i < localStorage.length; i++){
+if(loggedUser !== "admin"){
 
-  const key =
-  localStorage.key(i);
-
-  // Ignorar claves internas
-
-  if(
-    key === "loggedUser" ||
-    key === "theme"
-  ){
-    continue;
-  }
-
-  try{
-
-    const user =
-    JSON.parse(localStorage.getItem(key));
-
-    // Verificar estructura
-
-    if(
-      user &&
-      user.username &&
-      user.company &&
-      user.country
-    ){
-
-      table.innerHTML += `
-
-        <tr>
-
-          <td>${user.username}</td>
-
-          <td>${user.company}</td>
-
-          <td>${user.country}</td>
-
-          <td>${user.plan || "Ninguno"}</td>
-
-        </tr>
-
-      `;
-
-    }
-
-  }catch(error){
-
-    console.log("Elemento ignorado");
-
-  }
+  window.location.href =
+  "./login.html";
 
 }
-
-</script>
-
-<script>
-
-  const loggedUser =
-  localStorage.getItem("loggedUser");
-  
-  if(loggedUser !== "admin"){
-  
-    window.location.href =
-    "./login.html";
-  
-  }
 
 </script>
   

@@ -934,3 +934,33 @@ footer a:hover{
 .checkbox-container input:checked + .checkmark {
   transform: scale(1.05);
 }
+
+.sec-button{
+  width:75%;
+  padding:18px;
+
+  border:none;
+  border-radius:18px;
+
+  background:var(--primary);
+  color:white;
+
+  font-size:17px;
+  font-weight:bold;
+
+  cursor:pointer;
+
+  transition:
+  transform 0.3s ease,
+  background 0.3s ease,
+  box-shadow 0.3s ease;
+}
+
+.sec-button:hover{
+  transform:translateY(-4px);
+
+  background:#1d4ed8;
+
+  box-shadow:0 10px 25px rgba(0,0,0,0.2);
+}
+

@@ -41,9 +41,31 @@ if(registerForm){
 
     };
 
+    // Guardar usuario
+
     localStorage.setItem(
+
       username,
+
       JSON.stringify(user)
+
+    );
+
+    // Inicializar estructuras
+
+    localStorage.setItem(
+      "backups_" + username,
+      JSON.stringify([])
+    );
+
+    localStorage.setItem(
+      "alerts_" + username,
+      JSON.stringify([])
+    );
+
+    localStorage.setItem(
+      "restores_" + username,
+      JSON.stringify([])
     );
 
     alert("Cuenta creada correctamente.");
@@ -59,7 +81,8 @@ if(registerForm){
 // LOGIN
 // ====================
 
-const loginForm = document.getElementById("loginForm");
+const loginForm =
+document.getElementById("loginForm");
 
 if(loginForm){
 
@@ -73,69 +96,128 @@ if(loginForm){
     const password =
     document.getElementById("loginPassword").value;
 
+    // ====================
     // ADMIN
+    // ====================
 
     if(
+
       username === "admin" &&
       password === "Admin123!"
+
     ){
 
       localStorage.setItem(
+
         "loggedUser",
+
         "admin"
+
       );
 
-      window.location.href = "admin.html";
+      // Limpiar usuario gestionado anterior
+
+      localStorage.removeItem(
+        "managedUser"
+      );
+
+      window.location.href =
+      "./admin.html";
 
       return;
 
     }
 
+    // ====================
+    // CLIENTE
+    // ====================
+
     const user =
-    JSON.parse(localStorage.getItem(username));
-
-if(user && user.password === password){
-
-  localStorage.setItem(
-    "loggedUser",
-    username
-  );
-
-  alert("Inicio de sesión correcto.");
-
-  // Verificar plan
-
-  if(
-    user.plan &&
-    user.plan !== "Ninguno"
-  ){
-
-    // Usuario con plan
-
-    window.location.href =
-    "client-dashboard.html";
-
-  }else{
-
-    // Usuario SIN plan
-
-    alert(
-      "Debes contratar un plan para acceder al panel."
+    JSON.parse(
+      localStorage.getItem(username)
     );
 
-    window.location.href =
-    "index.html#planes";
+    if(
 
-  }
+      user &&
+      user.password === password
 
-}
+    ){
+
+      localStorage.setItem(
+
+        "loggedUser",
+
+        username
+
+      );
+
+      // Limpiar managedUser
+
+      localStorage.removeItem(
+        "managedUser"
+      );
+
+      alert(
+        "Inicio de sesión correcto."
+      );
+
+      // ====================
+      // VERIFICAR PLAN
+      // ====================
+
+      if(
+
+        user.plan &&
+        user.plan !== "Ninguno"
+
+      ){
+
+        // Usuario con plan
+
+        window.location.href =
+        "./client-dashboard.html";
+
+      }else{
+
+        // Usuario sin plan
+
+        alert(
+          "Debes contratar un plan para acceder al panel."
+        );
+
+        window.location.href =
+        "./index.html#planes";
+
+      }
 
     }else{
 
-      alert("Usuario o contraseña incorrectos.");
+      alert(
+        "Usuario o contraseña incorrectos."
+      );
 
     }
 
   });
+
+}
+
+// ====================
+// LOGOUT
+// ====================
+
+function logout(){
+
+  localStorage.removeItem(
+    "loggedUser"
+  );
+
+  localStorage.removeItem(
+    "managedUser"
+  );
+
+  window.location.href =
+  "./index.html";
 
 }

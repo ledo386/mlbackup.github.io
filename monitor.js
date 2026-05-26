@@ -1,59 +1,67 @@
+const targetUser =
+localStorage.getItem("managedUser")
+||
+localStorage.getItem("loggedUser");
+
 const states = [
 
-  "Sistema operativo",
+"Sistema operativo",
 
-  "Espacio de almacenamiento bajo",
+"Espacio bajo",
 
-  "Error temporal de conexión",
+"Backup completado",
 
-  "Backup completado correctamente",
+"Conexión estable",
 
-  "Monitorización activa",
+"Monitorización activa",
 
-  "Servidor estable"
+"Servidor estable"
 
 ];
 
-// ==========================
-// GENERAR ALERTAS
-// ==========================
-
 function generateAlert(){
 
-  const alerts =
-  JSON.parse(
-    localStorage.getItem("alerts")
-  ) || [];
+const alerts =
+JSON.parse(
+localStorage.getItem(
+"alerts_" + targetUser
+)
+) || [];
 
-  const randomState =
-  states[
-    Math.floor(
-      Math.random()*states.length
-    )
-  ];
+const randomAlert =
+states[
+Math.floor(
+Math.random()*states.length
+)
+];
 
-  alerts.push({
+alerts.push({
 
-    message:randomState,
+message:randomAlert,
 
-    date:
-    new Date().toLocaleString()
+date:
+new Date().toLocaleString()
 
-  });
+});
 
-  localStorage.setItem(
-    "alerts",
-    JSON.stringify(alerts)
-  );
+localStorage.setItem(
 
-  loadAlerts();
+"alerts_" + targetUser,
+
+JSON.stringify(alerts)
+
+);
+
+if(typeof loadAlerts === "function"){
+
+loadAlerts();
 
 }
 
-// Cada 45 segundos
+}
 
 setInterval(() => {
 
-  generateAlert();
+generateAlert();
 
 }, 45000);

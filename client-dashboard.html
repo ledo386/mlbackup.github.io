@@ -100,40 +100,36 @@
   
   <script>
   
-    if(
-      !localStorage.getItem("loggedUser")
-    ){
+    const loggedUser =
+    localStorage.getItem("loggedUser");
+  
+    if(!loggedUser){
       window.location.href =
       "./login.html";
     }
   
-    if(
-      localStorage.getItem("loggedUser")
-      ===
-      "admin"
-    ){
+    if(loggedUser === "admin"){
       window.location.href =
       "./admin.html";
     }
   
-    const currentUser =
-    JSON.parse(
-      localStorage.getItem(
-        localStorage.getItem("loggedUser")
-      )
+    const user =
+      JSON.parse(
+      localStorage.getItem(loggedUser)
     );
   
     if(
-      !currentUser.plan ||
-      currentUser.plan === "Ninguno"
-  
+      !user.plan ||
+      user.plan === "Ninguno"
     ){
+  
       alert(
-        "Debes contratar un plan."
+      "Debes contratar un plan."
       );
   
       window.location.href =
       "./index.html#planes";
+  
     }
   
   </script>

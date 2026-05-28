@@ -158,7 +158,7 @@ if(!container) return;
 const alerts =
 JSON.parse(
 localStorage.getItem(
-"alerts_" + targetUser
+"alerts_" + dashboardUser
 )
 ) || [];
 

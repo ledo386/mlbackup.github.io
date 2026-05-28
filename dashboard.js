@@ -46,23 +46,21 @@ table.innerHTML += `
 
 <tr>
 
-<td>${user.username}</td>
-
-<td>${user.company}</td>
-
-<td>${user.country}</td>
-
-<td>${user.plan}</td>
-
-<td>
-
-<button class="sec-button" onclick="manageUser('${user.username}')">
-
-Gestionar
-
-</button>
-
-</td>
+  <td>${user.username}</td>
+  
+  <td>${user.company}</td>
+  
+  <td>${user.country}</td>
+  
+  <td>${user.plan}</td>
+  
+  <td>
+  
+    <button class="sec-button" onclick="manageUser('${user.username}')">
+      Gestionar
+    </button>
+  
+  </td>
 
 </tr>
 

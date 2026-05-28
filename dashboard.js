@@ -56,9 +56,7 @@ table.innerHTML += `
 
 <td>
 
-<button
-onclick="manageUser('${user.username}')"
->
+<button class="sec-button" onclick="manageUser('${user.username}')">
 
 Gestionar
 

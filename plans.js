@@ -1,10 +1,21 @@
 // =========================
+// TARGET USER
+// =========================
+
+const targetUser =
+localStorage.getItem("managedUser")
+||
+localStorage.getItem("loggedUser");
+
+// =========================
 // COMPRA DE PLANES
 // =========================
 
 function buyPlan(planName){
 
-  // Usuario conectado
+  // =========================
+  // VERIFICAR LOGIN
+  // =========================
 
   const loggedUser =
   localStorage.getItem("loggedUser");
@@ -22,7 +33,9 @@ function buyPlan(planName){
 
   }
 
-  // Admin no puede comprar
+  // =========================
+  // ADMIN NO PUEDE COMPRAR
+  // =========================
 
   if(loggedUser === "admin"){
 
@@ -34,25 +47,48 @@ function buyPlan(planName){
 
   }
 
-  // Obtener usuario
+  // =========================
+  // OBTENER USUARIO
+  // =========================
 
   const user =
-  JSON.parse(localStorage.getItem(loggedUser));
+  JSON.parse(
+    localStorage.getItem(loggedUser)
+  );
 
-  // Confirmación
+  // =========================
+  // CONFIRMACIÓN
+  // =========================
 
   let confirmMessage =
   `¿Deseas contratar el ${planName}?`;
 
-  // Si ya tiene uno
+  // Si ya tiene plan
 
   if(
+
     user.plan &&
     user.plan !== "Ninguno"
+
   ){
 
+    // Mismo plan
+
+    if(user.plan === planName){
+
+      alert(
+        "Ya tienes contratado este plan."
+      );
+
+      return;
+
+    }
+
     confirmMessage =
-    `Ya tienes contratado el ${user.plan}.\n\n¿Deseas cancelarlo y cambiar al ${planName}?`;
+
+    `Actualmente tienes contratado el ${user.plan}.\n\n` +
+
+    `¿Deseas cancelarlo y cambiar al ${planName}?`;
 
   }
 
@@ -60,23 +96,124 @@ function buyPlan(planName){
   confirm(confirmMessage);
 
   if(!confirmed){
+
     return;
+
   }
 
-  // Actualizar plan
+  // =========================
+  // ACTUALIZAR PLAN
+  // =========================
 
   user.plan = planName;
 
-  // Guardar usuario actualizado
+  localStorage.setItem(
+
+    loggedUser,
+
+    JSON.stringify(user)
+
+  );
+
+  // =========================
+  // INICIALIZAR DATOS
+  // =========================
+
+  if(
+    !localStorage.getItem(
+      "backups_" + loggedUser
+    )
+  ){
+
+    localStorage.setItem(
+
+      "backups_" + loggedUser,
+
+      JSON.stringify([])
+
+    );
+
+  }
+
+  if(
+    !localStorage.getItem(
+      "alerts_" + loggedUser
+    )
+  ){
+
+    localStorage.setItem(
+
+      "alerts_" + loggedUser,
+
+      JSON.stringify([])
+
+    );
+
+  }
+
+  if(
+    !localStorage.getItem(
+      "restores_" + loggedUser
+    )
+  ){
+
+    localStorage.setItem(
+
+      "restores_" + loggedUser,
+
+      JSON.stringify([])
+
+    );
+
+  }
+
+  // =========================
+  // ALERTA DE SISTEMA
+  // =========================
+
+  const alerts =
+  JSON.parse(
+
+    localStorage.getItem(
+      "alerts_" + loggedUser
+    )
+
+  ) || [];
+
+  alerts.push({
+
+    message:
+    "Plan contratado: " + planName,
+
+    date:
+    new Date().toLocaleString()
+
+  });
 
   localStorage.setItem(
-    loggedUser,
-    JSON.stringify(user)
+
+    "alerts_" + loggedUser,
+
+    JSON.stringify(alerts)
+
   );
 
+  // =========================
+  // CONFIRMACIÓN FINAL
+  // =========================
+
   alert(
+
     `${planName} contratado correctamente.`
+
   );
+
+  // =========================
+  // REDIRECCIÓN
+  // =========================
+
+  window.location.href =
+  "./client-dashboard.html";
 
 }
 
@@ -91,42 +228,177 @@ function cancelPlan(){
 
   if(!loggedUser){
 
-    alert("Debes iniciar sesión.");
+    alert(
+      "Debes iniciar sesión."
+    );
+
+    return;
+
+  }
+
+  // =========================
+  // ADMIN NO
+  // =========================
+
+  if(loggedUser === "admin"){
+
+    alert(
+      "La cuenta administrador no tiene plan."
+    );
+
+    return;
+
+  }
+
+  // =========================
+  // OBTENER USUARIO
+  // =========================
+
+  const user =
+  JSON.parse(
+    localStorage.getItem(loggedUser)
+  );
+
+  // =========================
+  // SIN PLAN
+  // =========================
+
+  if(
+
+    !user.plan ||
+
+    user.plan === "Ninguno"
+
+  ){
+
+    alert(
+      "No tienes ningún plan contratado."
+    );
+
+    return;
+
+  }
+
+  // =========================
+  // CONFIRMAR
+  // =========================
+
+  const confirmed =
+  confirm(
+
+    `¿Deseas cancelar el ${user.plan}?`
+
+  );
+
+  if(!confirmed){
+
+    return;
+
+  }
+
+  // =========================
+  // GUARDAR PLAN
+  // =========================
+
+  const oldPlan =
+  user.plan;
+
+  user.plan = "Ninguno";
+
+  localStorage.setItem(
+
+    loggedUser,
+
+    JSON.stringify(user)
+
+  );
+
+  // =========================
+  // ALERTA
+  // =========================
+
+  const alerts =
+  JSON.parse(
+
+    localStorage.getItem(
+      "alerts_" + loggedUser
+    )
+
+  ) || [];
+
+  alerts.push({
+
+    message:
+    "Plan cancelado: " + oldPlan,
+
+    date:
+    new Date().toLocaleString()
+
+  });
+
+  localStorage.setItem(
+
+    "alerts_" + loggedUser,
+
+    JSON.stringify(alerts)
+
+  );
+
+  // =========================
+  // CONFIRMACIÓN
+  // =========================
+
+  alert(
+    "Plan cancelado correctamente."
+  );
+
+  // =========================
+  // REDIRECCIÓN
+  // =========================
+
+  window.location.href =
+  "./index.html#planes";
+
+}
+
+// =========================
+// INFORMACIÓN DE PLAN
+// =========================
+
+function loadCurrentPlan(){
+
+  const planElement =
+  document.getElementById(
+    "currentPlan"
+  );
+
+  if(!planElement){
+
+    return;
+
+  }
+
+  const loggedUser =
+  localStorage.getItem("loggedUser");
+
+  if(
+    !loggedUser ||
+    loggedUser === "admin"
+  ){
+
+    planElement.innerHTML =
+    "Sin información";
 
     return;
 
   }
 
   const user =
-  JSON.parse(localStorage.getItem(loggedUser));
-
-  if(
-    !user.plan ||
-    user.plan === "Ninguno"
-  ){
-
-    alert("No tienes ningún plan contratado.");
-
-    return;
-
-  }
-
-  const confirmed =
-  confirm(
-    `¿Deseas cancelar el ${user.plan}?`
+  JSON.parse(
+    localStorage.getItem(loggedUser)
   );
 
-  if(!confirmed){
-    return;
-  }
-
-  user.plan = "Ninguno";
-
-  localStorage.setItem(
-    loggedUser,
-    JSON.stringify(user)
-  );
-
-  alert("Plan cancelado correctamente.");
+  planElement.innerHTML =
+  user.plan;
 
 }

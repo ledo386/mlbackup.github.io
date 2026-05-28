@@ -1,4 +1,4 @@
-const targetUser =
+const monitorUser =
 localStorage.getItem("managedUser")
 ||
 localStorage.getItem("loggedUser");

@@ -1,4 +1,4 @@
-const currentUser = localStorage.getItem("loggedUser");
+const backupTargetUser = localStorage.getItem("loggedUser");
 
 // ==========================
 // BACKUP MANUAL

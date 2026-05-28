@@ -807,131 +807,97 @@ DASHBOARD
 ========================= */
 
 .dashboard-page{
-
-padding-top:140px;
-padding-bottom:80px;
-
-min-height:100vh;
-
+  padding-top:140px;
+  padding-bottom:80px;
+  min-height:100vh;
 }
 
 .dashboard-title{
-
-font-size:52px;
-
-margin-bottom:40px;
-
-text-align:center;
-
+  font-size:52px;
+  margin-bottom:40px;
+  text-align:center;
 }
 
 .dashboard-grid{
-
-display:grid;
-
-grid-template-columns:
-repeat(auto-fit,minmax(320px,1fr));
-
-gap:30px;
-
-margin-bottom:40px;
-
+  display:grid;
+  grid-template-columns:
+  repeat(auto-fit,minmax(320px,1fr));
+  gap:30px;
+  margin-bottom:40px;
 }
 
 .dashboard-card{
-
-background:var(--card);
-
-padding:30px;
-
-border-radius:30px;
-
-box-shadow:
-0 10px 30px rgba(0,0,0,0.1);
-
-transition:0.3s;
-
+  background:var(--card);
+  padding:30px;
+  border-radius:30px;
+  box-shadow:
+  0 10px 30px rgba(0,0,0,0.1);
+  transition:0.3s;
 }
 
 .dashboard-card:hover{
-
-transform:translateY(-5px);
-
+  transform:translateY(-5px);
 }
 
 .dashboard-card h2{
-
-margin-bottom:25px;
-
-color:var(--primary);
-
+  margin-bottom:25px;
+  color:var(--primary);
 }
 
 .alert-box{
-
-background:var(--secondary);
-
-padding:18px;
-
-border-radius:18px;
-
-margin-bottom:15px;
-
+  background:var(--secondary);
+  padding:18px;
+  border-radius:18px;
+  margin-bottom:15px;
 }
 
 .alert-box p{
-
-margin-top:8px;
-
-font-size:14px;
-
-opacity:0.8;
-
+  margin-top:8px;
+  font-size:14px;
+  opacity:0.8;
 }
 
 table{
-
-width:100%;
-
-border-collapse:collapse;
-
-margin-top:20px;
-
+  width:100%;
+  border-collapse:collapse;
+  margin-top:20px;
 }
 
 th{
-
-background:var(--primary);
-
-color:white;
-
-padding:16px;
-
+  background:var(--primary);
+  color:white;
+  padding:16px;
 }
 
 td{
-
-padding:16px;
-
-border-bottom:
-1px solid rgba(255,255,255,0.08);
-
+  padding:16px;
+  border-bottom:
+  1px solid rgba(255,255,255,0.08);
 }
 
 .system-ok{
-
-font-size:18px;
-
-font-weight:bold;
-
-color:#27ae60;
-
+  font-size:18px;
+  font-weight:bold;
+  color:#27ae60;
 }
 
 .dashboard-card button{
-
 margin-bottom:15px;
-
 width:100%;
+}
 
+.gest-button{
+  display:block;
+  width:75%;
+  heigh:75%
+  margin:0 auto;
+  padding:18px;
+  border:none;
+  border-radius:18px;
+  background:var(--primary);
+  color:white;
+  font-size:17px;
+  font-weight:bold;
+  cursor:pointer;
+  transition:transform 0.3s ease, background 0.3s ease, box-shadow 0.3s ease;
 }

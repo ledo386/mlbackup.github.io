@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Administrador</title>
+  <title>ML Backup - Admin</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -19,12 +19,7 @@
       
           <div class="logo-container">
       
-            <img 
-              id="siteLogo"
-              src="logoMLBclaro.png"
-              alt="ML Backup Logo"
-              class="logo-img"
-            >
+            <img id="siteLogo" src="logoMLBclaro.png" alt="ML Backup Logo" class="logo-img">
       
           </div>
       
@@ -54,61 +49,58 @@
 
 <section class="dashboard-page">
 
-<div class="container">
-
-<h1 class="dashboard-title">
-Panel de Administración
-</h1>
-
-<div class="dashboard-card">
-
-<h2>Clientes Registrados</h2>
-
-<table>
-
-<thead>
-
-<tr>
-
-<th>Usuario</th>
-<th>Empresa</th>
-<th>País</th>
-<th>Plan</th>
-<th>Acciones</th>
-
-</tr>
-
-</thead>
-
-<tbody id="usersTable"></tbody>
-
-</table>
-
-</div>
-
-</div>
+  <div class="container">
+  
+    <h1 class="dashboard-title">
+      Panel de Administración
+    </h1>
+    
+    <div class="dashboard-card">
+    
+      <h2>Clientes Registrados</h2>
+      
+      <table>
+      
+        <thead>
+        
+          <tr>
+          
+            <th>Usuario</th>
+            <th>Empresa</th>
+            <th>País</th>
+            <th>Plan</th>
+            <th>Acciones</th>
+          
+          </tr>
+        
+        </thead>
+      
+      <tbody id="usersTable"></tbody>
+      
+      </table>
+    
+    </div>
+  
+  </div>
 
 </section>
 
-<script>
-
-const loggedUser =
-localStorage.getItem("loggedUser");
-
-if(loggedUser !== "admin"){
-
-  window.location.href =
-  "./login.html";
-
-}
-
-</script>
+  <script>
   
-<script src="./auth.js"></script>
-<script src="./script.js"></script>
-<script src="./backup-system.js"></script>
-<script src="./monitor.js"></script>
-<script src="./dashboard.js"></script>
+    const loggedUser = localStorage.getItem("loggedUser");
+    
+    if(loggedUser !== "admin"){
+      window.location.href =
+      "./login.html";
+    }
+  
+  </script>
+  
+  <script src="./auth.js"></script>
+  <script src="./script.js"></script>
+  <script src="./backup-system.js"></script>
+  <script src="./monitor.js"></script>
+  <script src="./dashboard.js"></script>
 
 </body>
 </html>

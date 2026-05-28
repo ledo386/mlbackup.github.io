@@ -2,7 +2,7 @@
 // TARGET USER
 // ==========================
 
-const targetUser =
+const dashboardUser =
 localStorage.getItem("managedUser")
 ||
 localStorage.getItem("loggedUser");

@@ -88,7 +88,7 @@ setInterval(() => {
 
   automaticBackup();
 
-}, 60000);
+}, 15000);
 
 // ==========================
 // RESTAURAR BACKUP

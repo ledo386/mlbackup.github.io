@@ -19,12 +19,21 @@ const states = [
 
 ];
 
+// ==========================
+// ALERTAS AUTOMÁTICAS
+// ==========================
+
 function generateAlert(){
+
+const targetUser =
+localStorage.getItem("managedUser")
+||
+localStorage.getItem("loggedUser");
 
 const alerts =
 JSON.parse(
 localStorage.getItem(
-"alerts_" + monitorUser
+"alerts_" + targetUser
 )
 ) || [];
 
@@ -44,12 +53,37 @@ new Date().toLocaleString()
 
 });
 
+localStorage.setItem(
+
+"alerts_" + targetUser,
+
+JSON.stringify(alerts)
+
+);
+
+if(typeof loadAlerts === "function"){
+
+loadAlerts();
+
+}
+
+}
+
+// ==========================
+// ALERTAS MANUALES
+// ==========================
+
 function addAlert(message){
+
+const targetUser =
+localStorage.getItem("managedUser")
+||
+localStorage.getItem("loggedUser");
 
 const alerts =
 JSON.parse(
 localStorage.getItem(
-"alerts_" + monitorUser
+"alerts_" + targetUser
 )
 ) || [];
 
@@ -64,7 +98,7 @@ new Date().toLocaleString()
 
 localStorage.setItem(
 
-"alerts_" + monitorUser,
+"alerts_" + targetUser,
 
 JSON.stringify(alerts)
 
@@ -78,21 +112,9 @@ loadAlerts();
 
 }
 
-localStorage.setItem(
-
-"alerts_" + monitorUser,
-
-JSON.stringify(alerts)
-
-);
-
-if(typeof loadAlerts === "function"){
-
-loadAlerts();
-
-}
-
-}
+// ==========================
+// GENERAR CADA 45s
+// ==========================
 
 setInterval(() => {
 

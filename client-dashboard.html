@@ -100,31 +100,46 @@
   
   <script>
   
-    const loggedUser =
+    const clientUser =
     localStorage.getItem("loggedUser");
   
-    if(!loggedUser){
+    // NO LOGUEADO
+  
+    if(!clientUser){
+  
       window.location.href =
       "./login.html";
+  
     }
   
-    if(loggedUser === "admin"){
+    // ADMIN
+  
+    if(clientUser === "admin"){
+  
       window.location.href =
       "./admin.html";
+  
     }
   
-    const user =
-      JSON.parse(
-      localStorage.getItem(loggedUser)
+    // DATOS USUARIO
+  
+    const clientData =
+    JSON.parse(
+      localStorage.getItem(clientUser)
     );
   
+    // SIN PLAN
+  
     if(
-      !user.plan ||
-      user.plan === "Ninguno"
+  
+      !clientData.plan ||
+  
+      clientData.plan === "Ninguno"
+  
     ){
   
       alert(
-      "Debes contratar un plan."
+        "Debes contratar un plan."
       );
   
       window.location.href =

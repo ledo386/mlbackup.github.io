@@ -107,6 +107,10 @@ document.getElementById(
 
 if(!table) return;
 
+// ==========================
+// BACKUPS
+// ==========================
+
 const backups =
 JSON.parse(
 localStorage.getItem(
@@ -114,21 +118,90 @@ localStorage.getItem(
 )
 ) || [];
 
+// ==========================
+// RESTORES
+// ==========================
+
+const restores =
+JSON.parse(
+localStorage.getItem(
+"restores_" + dashboardUser
+)
+) || [];
+
+// ==========================
+// COMBINAR HISTORIAL
+// ==========================
+
+const history = [];
+
+// Añadir backups
+
+backups.forEach(backup => {
+
+history.push({
+
+date:backup.date,
+
+type:backup.type,
+
+status:backup.status,
+
+size:backup.size
+
+});
+
+});
+
+// Añadir restauraciones
+
+restores.forEach(restore => {
+
+history.push({
+
+date:restore.date,
+
+type:"Restauración",
+
+status:restore.status,
+
+size:"-"
+
+});
+
+});
+
+// ==========================
+// ORDENAR MÁS RECIENTE
+// ==========================
+
+history.sort((a,b) => {
+
+return new Date(b.date)
+-
+new Date(a.date);
+
+});
+
+// ==========================
+// PINTAR TABLA
+// ==========================
+
 table.innerHTML = "";
 
-backups.reverse().forEach(backup => {
+history.forEach(item => {
 
 table.innerHTML += `
 
 <tr>
 
-<td>${backup.date}</td>
+<td>${item.date}</td>
 
-<td>${backup.type}</td>
+<td>${item.type}</td>
 
-<td>${backup.status}</td>
+<td>${item.status}</td>
 
-<td>${backup.size}</td>
+<td>${item.size}</td>
 
 </tr>
 

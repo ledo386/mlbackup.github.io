@@ -44,6 +44,40 @@ new Date().toLocaleString()
 
 });
 
+function addAlert(message){
+
+const alerts =
+JSON.parse(
+localStorage.getItem(
+"alerts_" + monitorUser
+)
+) || [];
+
+alerts.push({
+
+message:message,
+
+date:
+new Date().toLocaleString()
+
+});
+
+localStorage.setItem(
+
+"alerts_" + monitorUser,
+
+JSON.stringify(alerts)
+
+);
+
+if(typeof loadAlerts === "function"){
+
+loadAlerts();
+
+}
+
+}
+
 localStorage.setItem(
 
 "alerts_" + monitorUser,

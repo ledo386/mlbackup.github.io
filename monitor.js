@@ -33,7 +33,7 @@ localStorage.getItem("loggedUser");
 const alerts =
 JSON.parse(
 localStorage.getItem(
-"alerts_" + targetUser
+"alerts_" + monitorUser
 )
 ) || [];
 

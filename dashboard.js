@@ -1,3 +1,11 @@
+if(
+  localStorage.getItem("loggedUser")
+  !==
+  "admin"
+){
+  window.location.href =
+  "./login.html";
+}
 
 // ==========================
 // TARGET USER

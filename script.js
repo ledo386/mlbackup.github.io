@@ -18,12 +18,12 @@ if(form){
 // DARK MODE
 // =========================
 
-const themeToggle =
+let themeToggle =
 document.getElementById("themeToggle");
 
 // CARGAR TEMA GUARDADO
 
-const savedTheme =
+ley savedTheme =
 localStorage.getItem("theme");
 
 if(savedTheme === "dark"){
@@ -102,10 +102,10 @@ revealOnScroll();
 // USER MENU
 // =========================
 
-const userArea =
+let userArea =
 document.getElementById("userArea");
 
-const loggedUser =
+let loggedUser =
 localStorage.getItem("loggedUser");
 
 if(userArea){
@@ -194,9 +194,7 @@ if(userArea){
           ${dashboardButton}
 
           <button onclick="logout()">
-
             Cerrar sesión
-
           </button>
 
         </div>
@@ -314,7 +312,7 @@ window.addEventListener("load", () => {
 // LOGO DINÁMICO
 // =========================
 
-const siteLogo =
+let siteLogo =
 document.getElementById("siteLogo");
 
 function updateLogo(){

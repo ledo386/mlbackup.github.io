@@ -23,7 +23,7 @@ document.getElementById("themeToggle");
 
 // CARGAR TEMA GUARDADO
 
-ley savedTheme =
+let savedTheme =
 localStorage.getItem("theme");
 
 if(savedTheme === "dark"){

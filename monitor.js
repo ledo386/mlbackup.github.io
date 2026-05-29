@@ -55,7 +55,7 @@ new Date().toLocaleString()
 
 localStorage.setItem(
 
-"alerts_" + targetUser,
+"alerts_" + monitorUser,
 
 JSON.stringify(alerts)
 
@@ -83,7 +83,7 @@ localStorage.getItem("loggedUser");
 const alerts =
 JSON.parse(
 localStorage.getItem(
-"alerts_" + targetUser
+"alerts_" + monitorUser
 )
 ) || [];
 
@@ -98,7 +98,7 @@ new Date().toLocaleString()
 
 localStorage.setItem(
 
-"alerts_" + targetUser,
+"alerts_" + monitorUser,
 
 JSON.stringify(alerts)
 

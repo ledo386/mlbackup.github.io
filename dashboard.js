@@ -251,6 +251,130 @@ container.innerHTML += `
 
 }
 
+// ==========================
+// STORAGE SYSTEM
+// ==========================
+
+function loadStorage(){
+
+const usedElement =
+document.getElementById(
+"storageUsed"
+);
+
+const limitElement =
+document.getElementById(
+"storageLimit"
+);
+
+const fillElement =
+document.getElementById(
+"storageFill"
+);
+
+if(
+!usedElement ||
+!limitElement ||
+!fillElement
+){
+return;
+}
+
+// ==========================
+// USER
+// ==========================
+
+const userData =
+JSON.parse(
+localStorage.getItem(
+dashboardUser
+)
+);
+
+if(!userData) return;
+
+// ==========================
+// PLAN LIMITS
+// ==========================
+
+let limitGB = 500;
+
+if(
+userData.plan ===
+"Plan Profesional"
+){
+
+limitGB = 5120;
+
+}
+
+if(
+userData.plan ===
+"Plan Empresarial"
+){
+
+limitGB = Infinity;
+
+}
+
+// ==========================
+// CALCULAR USO
+// ==========================
+
+const backups =
+JSON.parse(
+localStorage.getItem(
+"backups_" + dashboardUser
+)
+) || [];
+
+let usedGB = 0;
+
+backups.forEach(backup => {
+
+const sizeMB =
+parseInt(backup.size);
+
+usedGB += sizeMB / 1024;
+
+});
+
+// 1 decimal
+
+usedGB =
+usedGB.toFixed(1);
+
+// ==========================
+// MOSTRAR
+// ==========================
+
+usedElement.innerHTML =
+usedGB + " GB";
+
+if(limitGB === Infinity){
+
+limitElement.innerHTML =
+"/ Ilimitado";
+
+fillElement.style.width =
+"35%";
+
+}else{
+
+limitElement.innerHTML =
+"/ " + limitGB + " GB";
+
+const percentage =
+(usedGB / limitGB) * 100;
+
+fillElement.style.width =
+percentage + "%";
+
+}
+
+}
+
 loadUsers();
 loadHistory();
 loadAlerts();
+loadStorage();

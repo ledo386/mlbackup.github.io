@@ -36,6 +36,8 @@ function runBackup(){
     JSON.stringify(backups)
   );
 
+  loadStorage();
+  
   addAlert(
     "Copia manual completada"
   );

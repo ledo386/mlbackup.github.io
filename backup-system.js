@@ -79,6 +79,8 @@ function automaticBackup(){
     JSON.stringify(backups)
   );
 
+  loadStorage();
+  
   addAlert(
     "Backup automático ejecutado"
   );

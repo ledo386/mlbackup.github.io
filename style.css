@@ -47,14 +47,8 @@ nav a{
   color:var(--text);
   font-weight:500;
   position:relative;
-  transition:0.3s ease;
   padding:8px 14px;
   border-radius:12px;
-}
-
-nav a:hover{
-  background:var(--primary);
-  color:white;
 }
 
 .hero{
@@ -110,7 +104,6 @@ nav a:hover{
 
 .hero-card{
   background:var(--card);
-  transition:0.4s ease;
   padding:40px;
   border-radius:30px;
   box-shadow:0 10px 30px rgba(0,0,0,0.08);
@@ -189,14 +182,8 @@ section{
   font-weight:bold;
 }
 
-.featured button:hover{
-  background:#1d4ed8;
-  color:white;
-}
-
 .popular{
   background:var(--card);
-  transition:0.4s ease;
   color:#2563eb;
   padding:5px 15px;
   border-radius:20px;
@@ -217,7 +204,6 @@ section{
 
 .contact-box{
   background:var(--card);
-  transition:0.4s ease;
   padding:60px;
   border-radius:30px;
   box-shadow:0 10px 30px rgba(0,0,0,0.05);
@@ -398,10 +384,6 @@ button, .btn{
   text-decoration:none;
 }
 
-.login-btn:hover{
-  background:#1d4ed8;
-}
-
 .user-menu{
   position:relative;
   cursor:pointer;
@@ -414,10 +396,6 @@ button, .btn{
   background:var(--card);
   padding:10px 16px;
   border-radius:14px;
-}
-
-.user-profile:hover{
-  background:var(--secondary);
 }
 
 .user-dropdown{
@@ -530,12 +508,6 @@ footer a{
   font-size:17px;
   font-weight:bold;
   cursor:pointer;
-}
-
-.sec-button:hover{
-  transform:translateY(-4px);
-  background:#1d4ed8;
-  box-shadow:0 10px 25px rgba(0,0,0,0.2);
 }
 
 .dashboard-page{

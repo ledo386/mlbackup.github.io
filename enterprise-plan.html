@@ -2,29 +2,21 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ML Backup - Plan Empresarial</title>
+  <title>ML Backup</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  
-  <button id="themeToggle">🌙</button>
-  
-  <!-- NAVBAR -->
+
+  <!-- BARRA DE NAVEGACIÓN -->
   <header>
+
     <div class="container nav">
       <h1>
-
         <a href="./index.html" class="logo">
-      
           <div class="logo-container">
-      
             <img id="siteLogo" src="logoMLBclaro.png" alt="ML Backup Logo" class="logo-img">
-      
           </div>
-      
         </a>
-      
       </h1>
 
       <nav class="navbar-right">
@@ -38,9 +30,12 @@
         <div id="userArea"></div>
       
       </nav>
+    
     </div>
+  
   </header>
 
+  <!-- TARJETA PLAN EMPRESARIAL -->
   <section class="plan-page reveal">
   
     <div class="container">
@@ -85,16 +80,13 @@
           <li>Escalabilidad para crecimiento empresarial</li>
         </ul>
   
-        <button class="plan-button" onclick="buyPlan('Plan Empresarial')">
-          Contratar plan
-        </button>
+        <button class="plan-button" onclick="buyPlan('Plan Empresarial')">Contratar plan</button>
   
-        <button class="sec-button" onclick="cancelPlan()">
-          Cancelar plan actual
-        </button>
+        <button class="sec-button" onclick="cancelPlan()">Cancelar plan actual</button>
         
       </div>
-  
+
+      <!-- OTROS PLANES -->
       <div class="other-plans">
   
         <h3>Otros planes</h3>

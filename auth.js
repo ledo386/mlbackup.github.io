@@ -1,7 +1,4 @@
-// ====================
 // REGISTRO
-// ====================
-
 const registerForm =
 document.getElementById("registerForm");
 
@@ -15,7 +12,6 @@ if(registerForm){
     document.getElementById("registerUsername").value;
 
     // Verificar si ya existe
-
     if(localStorage.getItem(username)){
 
       alert("Ese usuario ya existe.");
@@ -52,7 +48,6 @@ if(registerForm){
     );
 
     // Inicializar estructuras
-
     localStorage.setItem(
       "backups_" + username,
       JSON.stringify([])
@@ -77,10 +72,7 @@ if(registerForm){
 
 }
 
-// ====================
 // LOGIN
-// ====================
-
 const loginForm =
 document.getElementById("loginForm");
 
@@ -96,10 +88,7 @@ if(loginForm){
     const password =
     document.getElementById("loginPassword").value;
 
-    // ====================
     // ADMIN
-    // ====================
-
     if(
 
       username === "admin" &&
@@ -116,62 +105,31 @@ if(loginForm){
       );
 
       // Limpiar usuario gestionado anterior
+      localStorage.removeItem("managedUser" );
 
-      localStorage.removeItem(
-        "managedUser"
-      );
-
-      window.location.href =
-      "./admin.html";
-
+      window.location.href = "./admin.html";
+      
       return;
 
     }
 
-    // ====================
     // CLIENTE
-    // ====================
-
     const user =
     JSON.parse(
       localStorage.getItem(username)
     );
 
-    if(
+    if(user && user.password === password){
 
-      user &&
-      user.password === password
-
-    ){
-
-      localStorage.setItem(
-
-        "loggedUser",
-
-        username
-
-      );
+      localStorage.setItem("loggedUser",username);
 
       // Limpiar managedUser
+      localStorage.removeItem("managedUser");
 
-      localStorage.removeItem(
-        "managedUser"
-      );
+      alert("Inicio de sesión correcto.");
 
-      alert(
-        "Inicio de sesión correcto."
-      );
-
-      // ====================
       // VERIFICAR PLAN
-      // ====================
-
-      if(
-
-        user.plan &&
-        user.plan !== "Ninguno"
-
-      ){
+      if(user.plan && user.plan !== "Ninguno"){
 
         // Usuario con plan
 

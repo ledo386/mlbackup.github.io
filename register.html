@@ -2,29 +2,21 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ML Backup - Registro</title>
+  <title>ML Backup</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  
-  <button id="themeToggle">🌙</button>
-  
-  <!-- NAVBAR -->
+
+  <!-- BARRA DE NAVEGACIÓN -->
   <header>
+
     <div class="container nav">
       <h1>
-
         <a href="./index.html" class="logo">
-      
           <div class="logo-container">
-      
             <img id="siteLogo" src="logoMLBclaro.png" alt="ML Backup Logo" class="logo-img">
-      
           </div>
-      
         </a>
-      
       </h1>
 
       <nav class="navbar-right">
@@ -38,131 +30,112 @@
         <div id="userArea"></div>
       
       </nav>
+    
     </div>
+  
   </header>
 
-<section class="login-page reveal">
+  <!-- FORMULARIO DE REGISTRO -->
+  <section class="login-page reveal">
+  
+    <div class="login-box">
+  
+      <h2>Crear cuenta</h2>
+  
+      <form id="registerForm">
+        <input type="text" id="registerUsername" placeholder="Usuario" required>
+        <input class="password-box" type="password" id="registerPassword" placeholder="Contraseña" required>
+        <input type="text" id="registerCompany" placeholder="Empresa" required>
+        
+        <select id="registerCountry" required>
+  
+          <option value="" disabled selected>
+            Selecciona un país
+          </option>
+        
+          <option value="Afganistán">Afganistán</option>
+          <option value="Alemania">Alemania</option>
+          <option value="Arabia Saudita">Arabia Saudita</option>
+          <option value="Argentina">Argentina</option>
+          <option value="Australia">Australia</option>
+          <option value="Austria">Austria</option>
+          <option value="Bélgica">Bélgica</option>
+          <option value="Bolivia">Bolivia</option>
+          <option value="Brasil">Brasil</option>
+          <option value="Bulgaria">Bulgaria</option>
+          <option value="Canadá">Canadá</option>
+          <option value="Chile">Chile</option>
+          <option value="China">China</option>
+          <option value="Colombia">Colombia</option>
+          <option value="Corea del Sur">Corea del Sur</option>
+          <option value="Costa Rica">Costa Rica</option>
+          <option value="Croacia">Croacia</option>
+          <option value="Cuba">Cuba</option>
+          <option value="Dinamarca">Dinamarca</option>
+          <option value="Ecuador">Ecuador</option>
+          <option value="Egipto">Egipto</option>
+          <option value="El Salvador">El Salvador</option>
+          <option value="Emiratos Árabes Unidos">Emiratos Árabes Unidos</option>
+          <option value="España">España</option>
+          <option value="Estados Unidos">Estados Unidos</option>
+          <option value="Estonia">Estonia</option>
+          <option value="Filipinas">Filipinas</option>
+          <option value="Finlandia">Finlandia</option>
+          <option value="Francia">Francia</option>
+          <option value="Grecia">Grecia</option>
+          <option value="Guatemala">Guatemala</option>
+          <option value="Honduras">Honduras</option>
+          <option value="Hungría">Hungría</option>
+          <option value="India">India</option>
+          <option value="Indonesia">Indonesia</option>
+          <option value="Irlanda">Irlanda</option>
+          <option value="Islandia">Islandia</option>
+          <option value="Israel">Israel</option>
+          <option value="Italia">Italia</option>
+          <option value="Japón">Japón</option>
+          <option value="Luxemburgo">Luxemburgo</option>
+          <option value="Marruecos">Marruecos</option>
+          <option value="México">México</option>
+          <option value="Noruega">Noruega</option>
+          <option value="Nueva Zelanda">Nueva Zelanda</option>
+          <option value="Países Bajos">Países Bajos</option>
+          <option value="Panamá">Panamá</option>
+          <option value="Paraguay">Paraguay</option>
+          <option value="Perú">Perú</option>
+          <option value="Polonia">Polonia</option>
+          <option value="Portugal">Portugal</option>
+          <option value="Reino Unido">Reino Unido</option>
+          <option value="República Checa">República Checa</option>
+          <option value="República Dominicana">República Dominicana</option>
+          <option value="Rumanía">Rumanía</option>
+          <option value="Suecia">Suecia</option>
+          <option value="Suiza">Suiza</option>
+          <option value="Tailandia">Tailandia</option>
+          <option value="Turquía">Turquía</option>
+          <option value="Ucrania">Ucrania</option>
+          <option value="Uruguay">Uruguay</option>
+          <option value="Venezuela">Venezuela</option>
+        
+        </select>
+        
+        <button type="submit">Registrarse</button>
+  
+      </form>
+  
+      <p class="register-link">
+        ¿Ya tienes cuenta?
+        <a href="./login.html">Iniciar sesión</a>
+      </p>
+  
+    </div>
+  
+  </section>
 
-  <div class="login-box">
-
-    <h2>Crear cuenta</h2>
-
-    <form id="registerForm">
-
-      <input type="text" id="registerUsername" placeholder="Usuario" required>
-
-      <div class="password-box">
-
-        <input type="password" id="registerPassword" placeholder="Contraseña" required>
-      
-        <span class="toggle-password" onclick="togglePassword('registerPassword', this)">
-          👁️
-        </span>
-      
-      </div>
-
-      <input type="text" id="registerCompany" placeholder="Empresa" required>
-
-      <select id="registerCountry" required>
-
-        <option value="" disabled selected>
-          Selecciona un país
-        </option>
-      
-        <option value="Afganistán">Afganistán</option>
-        <option value="Alemania">Alemania</option>
-        <option value="Arabia Saudita">Arabia Saudita</option>
-        <option value="Argentina">Argentina</option>
-        <option value="Australia">Australia</option>
-        <option value="Austria">Austria</option>
-        <option value="Bélgica">Bélgica</option>
-        <option value="Bolivia">Bolivia</option>
-        <option value="Brasil">Brasil</option>
-        <option value="Bulgaria">Bulgaria</option>
-        <option value="Canadá">Canadá</option>
-        <option value="Chile">Chile</option>
-        <option value="China">China</option>
-        <option value="Colombia">Colombia</option>
-        <option value="Corea del Sur">Corea del Sur</option>
-        <option value="Costa Rica">Costa Rica</option>
-        <option value="Croacia">Croacia</option>
-        <option value="Cuba">Cuba</option>
-        <option value="Dinamarca">Dinamarca</option>
-        <option value="Ecuador">Ecuador</option>
-        <option value="Egipto">Egipto</option>
-        <option value="El Salvador">El Salvador</option>
-        <option value="Emiratos Árabes Unidos">Emiratos Árabes Unidos</option>
-        <option value="España">España</option>
-        <option value="Estados Unidos">Estados Unidos</option>
-        <option value="Estonia">Estonia</option>
-        <option value="Filipinas">Filipinas</option>
-        <option value="Finlandia">Finlandia</option>
-        <option value="Francia">Francia</option>
-        <option value="Grecia">Grecia</option>
-        <option value="Guatemala">Guatemala</option>
-        <option value="Honduras">Honduras</option>
-        <option value="Hungría">Hungría</option>
-        <option value="India">India</option>
-        <option value="Indonesia">Indonesia</option>
-        <option value="Irlanda">Irlanda</option>
-        <option value="Islandia">Islandia</option>
-        <option value="Israel">Israel</option>
-        <option value="Italia">Italia</option>
-        <option value="Japón">Japón</option>
-        <option value="Luxemburgo">Luxemburgo</option>
-        <option value="Marruecos">Marruecos</option>
-        <option value="México">México</option>
-        <option value="Noruega">Noruega</option>
-        <option value="Nueva Zelanda">Nueva Zelanda</option>
-        <option value="Países Bajos">Países Bajos</option>
-        <option value="Panamá">Panamá</option>
-        <option value="Paraguay">Paraguay</option>
-        <option value="Perú">Perú</option>
-        <option value="Polonia">Polonia</option>
-        <option value="Portugal">Portugal</option>
-        <option value="Reino Unido">Reino Unido</option>
-        <option value="República Checa">República Checa</option>
-        <option value="República Dominicana">República Dominicana</option>
-        <option value="Rumanía">Rumanía</option>
-        <option value="Suecia">Suecia</option>
-        <option value="Suiza">Suiza</option>
-        <option value="Tailandia">Tailandia</option>
-        <option value="Turquía">Turquía</option>
-        <option value="Ucrania">Ucrania</option>
-        <option value="Uruguay">Uruguay</option>
-        <option value="Venezuela">Venezuela</option>
-      
-      </select>
-
-      <label class="checkbox-container">
-        <input type="checkbox" id="terms" required>
-        <span class="checkmark"></span>
-        Acepto los términos y condiciones de la<a href="./policy.html" target="_blank">Política de privacidad</a>
-      </label>
-      
-      <button type="submit">Registrarse</button>
-
-    </form>
-
-    <p class="register-link">
-
-      ¿Ya tienes cuenta?
-    
-      <a href="./login.html">
-        Iniciar sesión
-      </a>
-    
-    </p>
-
-  </div>
-
-</section>
-
-<script src="./plans.js"></script>
-<script src="./auth.js"></script>
-<script src="./dashboard.js"></script>
-<script src="./monitor.js"></script>
-<script src="./script.js"></script>
+  <script src="./plans.js"></script>
+  <script src="./auth.js"></script>
+  <script src="./dashboard.js"></script>
+  <script src="./monitor.js"></script>
+  <script src="./script.js"></script>
 
 </body>
 </html>

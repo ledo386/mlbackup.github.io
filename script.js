@@ -14,10 +14,7 @@ if(form){
 
 }
 
-// =========================
 // USER MENU
-// =========================
-
 let userArea =
 document.getElementById("userArea");
 
@@ -26,10 +23,7 @@ localStorage.getItem("loggedUser");
 
 if(userArea){
 
-  // =========================
   // SIN LOGIN
-  // =========================
-
   if(!loggedUser){
 
     userArea.innerHTML = `
@@ -45,18 +39,12 @@ if(userArea){
 
   }
 
-  // =========================
   // CON LOGIN
-  // =========================
-
   else{
 
     let dashboardButton = "";
 
-    // =========================
     // ADMIN
-    // =========================
-
     if(loggedUser === "admin"){
 
       dashboardButton = `
@@ -71,10 +59,7 @@ if(userArea){
 
     }
 
-    // =========================
     // CLIENTE
-    // =========================
-
     else{
 
       dashboardButton = `
@@ -89,10 +74,7 @@ if(userArea){
 
     }
 
-    // =========================
     // MENÚ
-    // =========================
-
     userArea.innerHTML = `
 
       <div class="user-menu">
@@ -109,9 +91,7 @@ if(userArea){
 
           ${dashboardButton}
 
-          <button onclick="logout()">
-            Cerrar sesión
-          </button>
+          <button onclick="logout()">Cerrar sesión</button>
 
         </div>
 
@@ -123,23 +103,15 @@ if(userArea){
 
 }
 
-// =========================
 // LOGOUT
-// =========================
-
 function logout(){
-
-  localStorage.removeItem(
-    "loggedUser"
-  );
-
-  localStorage.removeItem(
-    "managedUser"
-  );
+  
+  localStorage.removeItem("loggedUser");
+  
+  localStorage.removeItem("managedUser");
 
   alert("Sesión cerrada.");
 
-  window.location.href =
-  "./index.html";
+  window.location.href = "./index.html";
 
 }

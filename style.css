@@ -11,15 +11,6 @@ html{
   --shadow:rgba(0,0,0,0.08);
 }
 
-body.dark{
-  --bg:#0f172a;
-  --text:#f8fafc;
-  --card:#1e293b;
-  --primary:#3b82f6;
-  --secondary:#334155;
-  --shadow:rgba(0,0,0,0.3);
-}
-
 *{
   margin:0;
   padding:0;
@@ -456,12 +447,8 @@ button, .btn{
   border-radius:12px;
   text-align:left;
   cursor:pointer;
-  transition:0.3s ease;
 }
 
-.user-dropdown button:hover, .user-dropdown a:hover{
-  background:var(--secondary);
-}
 .register-link{
   margin-top:20px;
   text-align:center;
@@ -485,12 +472,6 @@ button, .btn{
   width:180px;
   height:60px;
   object-fit:contain;
-  transition:,
-  opacity 0.3s ease;
-}
-
-.logo-img:hover{
-  opacity:0.9;
 }
 
 .login-box select{
@@ -522,23 +503,6 @@ button, .btn{
   outline:none;
 }
 
-.toggle-password{
-  position:absolute;
-  right:16px;
-  top:50%;
-  transform:translateY(-50%);
-  cursor:pointer;
-  user-select:none;
-  font-size:18px;
-  transition:0.3s ease;
-}
-
-.toggle-password:hover{
-  transform:
-  translateY(-50%)
-  scale(1.15);
-}
-
 footer{
   padding:30px 20px;
   text-align:center;
@@ -555,117 +519,6 @@ footer a{
   color:var(--primary);
   text-decoration:none;
   font-weight:bold;
-  transition:0.3s ease;
-}
-
-footer a:hover{
-  opacity:0.8;
-}
-
-.policy-page{
-  min-height:100vh;
-  padding:140px 40px 80px;
-}
-
-.policy-card{
-  width:100%;
-  background:var(--card);
-  color:var(--text);
-  padding:60px;
-  border-radius:30px;
-  box-shadow:0 15px 40px rgba(0,0,0,0.1);
-
-}
-
-.policy-card h1{
-  font-size:52px;
-  margin-bottom:40px;
-}
-
-.policy-card h2{
-  margin-top:40px;
-  margin-bottom:20px;
-  color:var(--primary);
-  font-size:30px;
-}
-
-.policy-card p{
-  margin-bottom:20px;
-  line-height:1.8;
-}
-
-.policy-card ul{
-  margin-bottom:30px;
-  margin-left:30px;
-}
-
-.policy-card li{
-  margin-bottom:12px;
-}
-
-.checkbox-container {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  cursor: pointer;
-  user-select: none;
-  color: var(--text);
-  font-size: 16px;
-}
-
-/* ocultar checkbox real */
-.checkbox-container input {
-  display: none;
-}
-
-/* caja visual */
-.checkmark {
-  width: 22px;
-  height: 22px;
-  border-radius: 6px;
-  background: var(--secondary);
-  border: 2px solid #cbd5e1;
-  position: relative;
-  transition: 0.3s ease;
-}
-
-/* hover */
-.checkbox-container:hover .checkmark {
-  border-color: var(--primary);
-  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
-}
-
-/* cuando checked */
-.checkbox-container input:checked + .checkmark {
-  background: var(--primary);
-  border-color: var(--primary);
-}
-
-/* tick */
-.checkmark::after {
-  content: "";
-  position: absolute;
-  display: none;
-  left: 6px;
-  top: 2px;
-  width: 6px;
-  height: 12px;
-  border: solid white;
-  border-width: 0 2px 2px 0;
-  transform: rotate(45deg);
-}
-
-/* mostrar tick cuando activo */
-.checkbox-container input:checked + .checkmark::after {
-  display: block;
-}
-
-.checkmark {
-  transition: 0.25s ease, transform 0.2s ease;
-}
-
-.checkbox-container input:checked + .checkmark {
-  transform: scale(1.05);
 }
 
 .sec-button{
@@ -681,7 +534,6 @@ footer a:hover{
   font-size:17px;
   font-weight:bold;
   cursor:pointer;
-  transition:transform 0.3s ease, background 0.3s ease, box-shadow 0.3s ease;
 }
 
 .sec-button:hover{
@@ -689,10 +541,6 @@ footer a:hover{
   background:#1d4ed8;
   box-shadow:0 10px 25px rgba(0,0,0,0.2);
 }
-
-/* =========================
-DASHBOARD
-========================= */
 
 .dashboard-page{
   padding-top:140px;
@@ -720,11 +568,6 @@ DASHBOARD
   border-radius:30px;
   box-shadow:
   0 10px 30px rgba(0,0,0,0.1);
-  transition:0.3s;
-}
-
-.dashboard-card:hover{
-  transform:translateY(-5px);
 }
 
 .dashboard-card h2{
@@ -787,5 +630,4 @@ td{
   font-size:17px;
   font-weight:bold;
   cursor:pointer;
-  transition:transform 0.3s ease, background 0.3s ease, box-shadow 0.3s ease;
 }

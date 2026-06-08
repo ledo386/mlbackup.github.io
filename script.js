@@ -8,35 +8,33 @@ if(form){
   });
 }
 
-// USER MENU
+// MENÚ USUARIO
 const userArea = document.getElementById("userArea");
 const loggedUser = localStorage.getItem("loggedUser");
 
 if(userArea){
 
-  // SIN LOGIN
+  // sin login
   if(!loggedUser){
     userArea.innerHTML = ` <a href="./login.html" class="login-button">Iniciar sesión</a> `;
   }
 
-  // CON LOGIN
+  // con login
   else{
-
     const dashboardButton = "";
 
-    // ADMIN
+    // admin
     if(loggedUser === "admin"){
       dashboardButton = <a href="./admin.html">Panel Admin</a>;
     }
 
-    // CLIENTE
+    // cliente
     else{
       dashboardButton = <a href="./client-dashboard.html">Mi Panel</a>;
     }
 
-    // MENÚ
+    // menú
     userArea.innerHTML = `
-      
       <div class="user-menu">
 
         <div class="user-profile">
@@ -49,12 +47,8 @@ if(userArea){
           <button onclick="logout()">Cerrar sesión</button>
         </div>
 
-      </div>
-
-    `;
-
+      </div>`;
   }
-
 }
 
 // LOGOUT

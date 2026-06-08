@@ -18,7 +18,6 @@ function loadUsers() {
       const user = JSON.parse(localStorage.getItem(key));
 
       if (user && user.username) {
-      
         table.innerHTML += `
 
           <tr>

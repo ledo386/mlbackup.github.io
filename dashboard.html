@@ -20,15 +20,12 @@
       </h1>
 
       <nav class="navbar-right">
-
         <a href="./index.html#inicio">Inicio</a>
         <a href="./index.html#servicios">Servicios</a>
         <a href="./index.html#planes">Planes</a>
         <a href="./index.html#sobre">Sobre Nosotros</a>
         <a href="./index.html#contacto">Contacto</a>
-
         <div id="userArea"></div>
-      
       </nav>
     
     </div>
@@ -48,48 +45,25 @@
           <h2>Almacenamiento</h2>
         
           <div class="storage-info">
-        
-            <span id="storageUsed">
-              0 GB
-            </span>
-        
-            <span id="storageLimit">
-              / 500 GB
-            </span>
-        
+            <span id="storageUsed">0 GB</span>
+            <span id="storageLimit">/ 500 GB</span>
           </div>
         
           <div class="storage-bar">
-        
-            <div
-              class="storage-fill"
-              id="storageFill"
-            ></div>
-        
+            <div class="storage-fill" id="storageFill"></div>
           </div>
         
         </div>
         
         <div class="dashboard-card">
-        
           <h2>Acciones</h2>
-        
-          <button class="gest-button" onclick="runBackup()">
-            Ejecutar copia manual
-          </button>
-        
-          <button class="gest-button" onclick="restoreBackup()">
-            Restaurar última copia
-          </button>
-        
+          <button class="gest-button" onclick="runBackup()">Ejecutar copia manual</button>
+          <button class="gest-button" onclick="restoreBackup()">Restaurar última copia</button>
         </div>
     
         <div class="dashboard-card">
-        
           <h2>Alertas</h2>
-          
           <div id="alertsContainer"></div>
-        
         </div>
     
       </div>
@@ -99,18 +73,14 @@
         <h2>Historial de Backups</h2>
         
         <table>
-        
-          <thead>
           
+          <thead>
             <tr>
-            
               <th>Fecha</th>
               <th>Tipo</th>
               <th>Estado</th>
               <th>Tamaño</th>
-            
             </tr>
-          
           </thead>
         
           <tbody id="historyTable"></tbody>

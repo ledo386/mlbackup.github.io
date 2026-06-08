@@ -73,7 +73,7 @@ if(loginForm){
 
       }else{
 
-        // Usuario sin plan
+        // usuario sin plan
         alert("Debes contratar un plan para acceder al panel.");
         window.location.href = "./index.html#planes";
       }

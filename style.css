@@ -246,18 +246,6 @@ footer a{
   text-decoration:none;
 }
 
-@media(max-width:900px){
-  .hero-content, .services-grid, .plans-grid, .about-grid, .footer-grid{
-    grid-template-columns:1fr;
-  }
-  nav{
-    display:none;
-  }
-  .hero h2{
-    font-size:40px;
-  }
-}
-
 button, .btn{
   cursor:pointer;
 }

@@ -1,378 +1,191 @@
-// ==========================
 // TARGET USER
-// ==========================
+const dashboardUser = localStorage.getItem("managedUser") || localStorage.getItem("loggedUser");
 
-const dashboardUser =
-localStorage.getItem("managedUser")
-||
-localStorage.getItem("loggedUser");
-
-// ==========================
 // CARGAR USUARIOS
-// ==========================
+function loadUsers() {
+  const table = document.getElementById("usersTable");
+  if (!table) return;
+  table.innerHTML = "";
 
-function loadUsers(){
+  for (let i = 0; i < localStorage.length; i++) {
+    const key = localStorage.key(i);
 
-const table =
-document.getElementById("usersTable");
+    if (key === "loggedUser" || key === "theme" || key === "managedUser") {
+      continue;
+    }
 
-if(!table) return;
+    try {
+      const user = JSON.parse(localStorage.getItem(key));
 
-table.innerHTML = "";
+      if (user && user.username) {
+      
+        table.innerHTML += `
 
-for(let i = 0; i < localStorage.length; i++){
+          <tr>
+            
+            <td>${user.username}</td>
+            <td>${user.company}</td>
+            <td>${user.country}</td>
+            <td>${user.plan}</td>
+            
+            <td>
+              <button class="gest-button" onclick="manageUser('${user.username}')">Gestionar</button>
+            </td>
+          
+          </tr>`;
+      }
 
-const key =
-localStorage.key(i);
-
-if(
-key === "loggedUser" ||
-key === "theme" ||
-key === "managedUser"
-){
-continue;
+    } catch (error) {
+      console.log("Error");
+    }
+  }
 }
 
-try{
-
-const user =
-JSON.parse(
-localStorage.getItem(key)
-);
-
-if(user && user.username){
-
-table.innerHTML += `
-
-<tr>
-
-  <td>${user.username}</td>
-  
-  <td>${user.company}</td>
-  
-  <td>${user.country}</td>
-  
-  <td>${user.plan}</td>
-  
-  <td>
-  
-    <button class="gest-button" onclick="manageUser('${user.username}')">
-      Gestionar
-    </button>
-  
-  </td>
-
-</tr>
-
-`;
-
-}
-
-}catch(error){
-
-console.log("Error");
-
-}
-
-}
-
-}
-
-// ==========================
 // GESTIONAR USUARIO
-// ==========================
-
-function manageUser(username){
-
-localStorage.setItem(
-"managedUser",
-username
-);
-
-window.location.href =
-"./dashboard.html";
-
+function manageUser(username) {
+  localStorage.setItem("managedUser", username);
+  window.location.href = "./dashboard.html";
 }
 
-// ==========================
 // HISTORIAL
-// ==========================
+function loadHistory() {
+  const table = document.getElementById("historyTable");
+  if (!table) return;
 
-function loadHistory(){
+  // backups
+  const backups = JSON.parse(localStorage.getItem("backups_" + dashboardUser)) || [];
 
-const table =
-document.getElementById(
-"historyTable"
-);
+  // restauraciones
+  const restores = JSON.parse(localStorage.getItem("restores_" + dashboardUser)) || [];
 
-if(!table) return;
+  // construir historial
+  const history = [];
 
-// ==========================
-// BACKUPS
-// ==========================
+  // añadir backups
+  backups.forEach(backup => {
+    history.push({
+      date: backup.date,
+      type: backup.type,
+      status: backup.status,
+      size: backup.size
+    });
+  });
 
-const backups =
-JSON.parse(
-localStorage.getItem(
-"backups_" + dashboardUser
-)
-) || [];
+  // añadir restauraciones
+  restores.forEach(restore => {
+    history.push({
+      date: restore.date,
+      type: "Restauración",
+      status: restore.status,
+      size: "-"
+    });
+  });
 
-// ==========================
-// RESTORES
-// ==========================
+  // ordenar según más reciente
+  history.sort((a, b) => {
+    return (new Date(b.date) - new Date(a.date));
+  });
 
-const restores =
-JSON.parse(
-localStorage.getItem(
-"restores_" + dashboardUser
-)
-) || [];
+  // crear tabla
+  table.innerHTML = "";
+  history.forEach(item => {
+    table.innerHTML += `
 
-// ==========================
-// COMBINAR HISTORIAL
-// ==========================
-
-const history = [];
-
-// Añadir backups
-
-backups.forEach(backup => {
-
-history.push({
-
-date:backup.date,
-
-type:backup.type,
-
-status:backup.status,
-
-size:backup.size
-
-});
-
-});
-
-// Añadir restauraciones
-
-restores.forEach(restore => {
-
-history.push({
-
-date:restore.date,
-
-type:"Restauración",
-
-status:restore.status,
-
-size:"-"
-
-});
-
-});
-
-// ==========================
-// ORDENAR MÁS RECIENTE
-// ==========================
-
-history.sort((a,b) => {
-
-return new Date(b.date)
--
-new Date(a.date);
-
-});
-
-// ==========================
-// PINTAR TABLA
-// ==========================
-
-table.innerHTML = "";
-
-history.forEach(item => {
-
-table.innerHTML += `
-
-<tr>
-
-<td>${item.date}</td>
-
-<td>${item.type}</td>
-
-<td>${item.status}</td>
-
-<td>${item.size}</td>
-
-</tr>
-
-`;
-
-});
-
+      <tr>
+        <td>${item.date}</td>
+        <td>${item.type}</td>
+        <td>${item.status}</td>
+        <td>${item.size}</td>
+      </tr>`;
+  });
 }
 
-// ==========================
 // ALERTAS
-// ==========================
+function loadAlerts() {
+  const container = document.getElementById("alertsContainer");
+  if (!container) return;
+  const alerts = JSON.parse(localStorage.getItem("alerts_" + dashboardUser)) || [];
+  container.innerHTML = "";
 
-function loadAlerts(){
+  alerts.reverse().forEach(alert => {
+    container.innerHTML += `
 
-const container =
-document.getElementById(
-"alertsContainer"
-);
+      <div class="alert-box">
+        <strong>${alert.message}</strong>
+        <p>${alert.date}</p>
+      </div>`;
+  });
+}
 
-if(!container) return;
+// ALMACENAMIENTO
+function loadStorage() {
+  const usedElement = document.getElementById("storageUsed");
+  const limitElement = document.getElementById("storageLimit");
+  const fillElement = document.getElementById("storageFill");
 
-const alerts =
-JSON.parse(
-localStorage.getItem(
-"alerts_" + dashboardUser
-)
-) || [];
+  if (!usedElement || !limitElement || !fillElement) {
+    return;
+  }
 
-container.innerHTML = "";
+  // usuario
+  const userData = JSON.parse(localStorage.getItem(dashboardUser));
+  if (!userData) return;
 
-alerts.reverse().forEach(alert => {
+  // límite según plan
+  let limitGB = 500;
 
-container.innerHTML += `
+  if (userData.plan === "Plan Profesional") {
+    limitGB = 5120;
+  }
 
-<div class="alert-box">
+  if (userData.plan === "Plan Empresarial") {
+    limitGB = Infinity;
+  }
 
-<strong>${alert.message}</strong>
+  // cacular uso
+  const backups = JSON.parse(localStorage.getItem("backups_" + dashboardUser)) || [];
+  let usedGB = 0;
+  
+  backups.forEach(backup => {
+    const sizeMB = parseInt(backup.size);
+    usedGB += sizeMB / 1024;
+  });
+  
+  usedGB = usedGB.toFixed(1);
 
-<p>${alert.date}</p>
+  // ==========================
+  // MOSTRAR
+  // ==========================
 
-</div>
+  usedElement.innerHTML =
+    usedGB + " GB";
 
-`;
+  if (limitGB === Infinity) {
 
-});
+    limitElement.innerHTML =
+      "/ Ilimitado";
+
+    fillElement.style.width =
+      "35%";
+
+  } else {
+
+    limitElement.innerHTML =
+      "/ " + limitGB + " GB";
+
+    const percentage =
+      (usedGB / limitGB) * 100;
+
+    fillElement.style.width =
+      percentage + "%";
+
+  }
 
 }
 
 // ==========================
-// STORAGE SYSTEM
+// INICIALIZAR
 // ==========================
-
-function loadStorage(){
-
-const usedElement =
-document.getElementById(
-"storageUsed"
-);
-
-const limitElement =
-document.getElementById(
-"storageLimit"
-);
-
-const fillElement =
-document.getElementById(
-"storageFill"
-);
-
-if(
-!usedElement ||
-!limitElement ||
-!fillElement
-){
-return;
-}
-
-// ==========================
-// USER
-// ==========================
-
-const userData =
-JSON.parse(
-localStorage.getItem(
-dashboardUser
-)
-);
-
-if(!userData) return;
-
-// ==========================
-// PLAN LIMITS
-// ==========================
-
-let limitGB = 500;
-
-if(
-userData.plan ===
-"Plan Profesional"
-){
-
-limitGB = 5120;
-
-}
-
-if(
-userData.plan ===
-"Plan Empresarial"
-){
-
-limitGB = Infinity;
-
-}
-
-// ==========================
-// CALCULAR USO
-// ==========================
-
-const backups =
-JSON.parse(
-localStorage.getItem(
-"backups_" + dashboardUser
-)
-) || [];
-
-let usedGB = 0;
-
-backups.forEach(backup => {
-
-const sizeMB =
-parseInt(backup.size);
-
-usedGB += sizeMB / 1024;
-
-});
-
-// 1 decimal
-
-usedGB =
-usedGB.toFixed(1);
-
-// ==========================
-// MOSTRAR
-// ==========================
-
-usedElement.innerHTML =
-usedGB + " GB";
-
-if(limitGB === Infinity){
-
-limitElement.innerHTML =
-"/ Ilimitado";
-
-fillElement.style.width =
-"35%";
-
-}else{
-
-limitElement.innerHTML =
-"/ " + limitGB + " GB";
-
-const percentage =
-(usedGB / limitGB) * 100;
-
-fillElement.style.width =
-percentage + "%";
-
-}
-
-}
 
 loadUsers();
 loadHistory();

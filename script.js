@@ -9,35 +9,33 @@ if(form){
 }
 
 // USER MENU
-let userArea = document.getElementById("userArea");
-let loggedUser = localStorage.getItem("loggedUser");
+const userArea = document.getElementById("userArea");
+const loggedUser = localStorage.getItem("loggedUser");
 
 if(userArea){
 
   // SIN LOGIN
   if(!loggedUser){
-    userArea.innerHTML = <a href="./login.html" class="login-button">Iniciar sesión</a>;
+    userArea.innerHTML = ` <a href="./login.html" class="login-button">Iniciar sesión</a> `;
   }
 
   // CON LOGIN
   else{
 
-    let dashboardButton = "";
+    const dashboardButton = "";
 
     // ADMIN
     if(loggedUser === "admin"){
-      dashboardButton = 
-        <a href="./admin.html">Panel Admin</a>;
+      dashboardButton = <a href="./admin.html">Panel Admin</a>;
     }
 
     // CLIENTE
     else{
-      dashboardButton = 
-        <a href="./client-dashboard.html">Mi Panel</a>;
+      dashboardButton = <a href="./client-dashboard.html">Mi Panel</a>;
     }
 
     // MENÚ
-    userArea.innerHTML = 
+    userArea.innerHTML = `
       
       <div class="user-menu">
 
@@ -53,7 +51,7 @@ if(userArea){
 
       </div>
 
-    ;
+    `;
 
   }
 

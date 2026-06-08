@@ -153,39 +153,18 @@ function loadStorage() {
   
   usedGB = usedGB.toFixed(1);
 
-  // ==========================
-  // MOSTRAR
-  // ==========================
-
-  usedElement.innerHTML =
-    usedGB + " GB";
+  // actualizar texto
+  usedElement.innerHTML = usedGB + " GB";
 
   if (limitGB === Infinity) {
-
-    limitElement.innerHTML =
-      "/ Ilimitado";
-
-    fillElement.style.width =
-      "35%";
-
+    limitElement.innerHTML = "/ Ilimitado";
+    fillElement.style.width = "35%";
   } else {
-
-    limitElement.innerHTML =
-      "/ " + limitGB + " GB";
-
-    const percentage =
-      (usedGB / limitGB) * 100;
-
-    fillElement.style.width =
-      percentage + "%";
-
+    limitElement.innerHTML = "/ " + limitGB + " GB";
+    const percentage = (usedGB / limitGB) * 100;
+    fillElement.style.width = percentage + "%";
   }
-
 }
-
-// ==========================
-// INICIALIZAR
-// ==========================
 
 loadUsers();
 loadHistory();

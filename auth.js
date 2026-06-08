@@ -31,7 +31,6 @@ if(registerForm){
     alert("Cuenta creada correctamente.");
     window.location.href = "./login.html";
   });
-
 }
 
 // LOGIN
@@ -79,9 +78,7 @@ if(loginForm){
     }else{
       alert("Usuario o contraseña incorrectos.");
     }
-
   });
-
 }
 
 // LOGOUT

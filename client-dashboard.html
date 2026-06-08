@@ -20,15 +20,12 @@
       </h1>
 
       <nav class="navbar-right">
-
         <a href="./index.html#inicio">Inicio</a>
         <a href="./index.html#servicios">Servicios</a>
         <a href="./index.html#planes">Planes</a>
         <a href="./index.html#sobre">Sobre Nosotros</a>
         <a href="./index.html#contacto">Contacto</a>
-
         <div id="userArea"></div>
-      
       </nav>
     
     </div>
@@ -48,44 +45,24 @@
           <h2>Almacenamiento</h2>
         
           <div class="storage-info">
-        
-            <span id="storageUsed">
-              0 GB
-            </span>
-        
-            <span id="storageLimit">
-              / 500 GB
-            </span>
-        
+            <span id="storageUsed">0 GB</span>
+            <span id="storageLimit">/ 500 GB</span>
           </div>
         
           <div class="storage-bar">
-        
-            <div
-              class="storage-fill"
-              id="storageFill"
-            ></div>
-        
+            <div class="storage-fill" id="storageFill"></div>
           </div>
         
         </div>
         
         <div class="dashboard-card">
-        
           <h2>Estado del Sistema</h2>
-        
-          <p class="system-ok">
-          Sistema funcionando correctamente
-          </p>
-        
+          <p class="system-ok">Sistema funcionando correctamente</p>
         </div>
     
         <div class="dashboard-card">
-        
           <h2>Alertas</h2>
-        
           <div id="alertsContainer"></div>
-        
         </div>
     
       </div>
@@ -95,18 +72,14 @@
         <h2>Historial</h2>
       
         <table>
-        
-          <thead>
           
+          <thead>
             <tr>
-            
               <th>Fecha</th>
               <th>Tipo</th>
               <th>Estado</th>
               <th>Tamaño</th>
-            
             </tr>
-          
           </thead>
         
           <tbody id="historyTable"></tbody>
@@ -121,51 +94,25 @@
   
   <script>
   
-    const clientUser =
-    localStorage.getItem("loggedUser");
+    const clientUser = localStorage.getItem("loggedUser");
   
     // NO LOGUEADO
-  
     if(!clientUser){
-  
-      window.location.href =
-      "./login.html";
-  
+      window.location.href = "./login.html";
     }
   
     // ADMIN
-  
     if(clientUser === "admin"){
-  
-      window.location.href =
-      "./admin.html";
-  
+      window.location.href = "./admin.html";
     }
   
     // DATOS USUARIO
-  
-    const clientData =
-    JSON.parse(
-      localStorage.getItem(clientUser)
-    );
+    const clientData = JSON.parse(localStorage.getItem(clientUser));
   
     // SIN PLAN
-  
-    if(
-  
-      !clientData.plan ||
-  
-      clientData.plan === "Ninguno"
-  
-    ){
-  
-      alert(
-        "Debes contratar un plan."
-      );
-  
-      window.location.href =
-      "./index.html#planes";
-  
+    if(!clientData.plan || clientData.plan === "Ninguno"){
+      alert("Debes contratar un plan.");
+      window.location.href ="./index.html#planes";
     }
   
   </script>

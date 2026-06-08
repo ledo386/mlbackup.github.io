@@ -50,7 +50,7 @@ if(loginForm){
       localStorage.setItem("loggedUser", "admin");
 
       // limpiar usuario gestionado anterior
-      localStorage.removeItem("managedUser" );
+      localStorage.removeItem("managedUser");
       window.location.href = "./admin.html";
       return;
     }

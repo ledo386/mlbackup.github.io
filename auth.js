@@ -44,9 +44,7 @@ if(loginForm){
     const password = document.getElementById("loginPassword").value;
 
     // ADMIN
-    if(
-      username === "admin" && password === "123"
-    ){
+    if(username === "admin" && password === "123"){
       localStorage.setItem("loggedUser", "admin");
 
       // limpiar usuario gestionado anterior

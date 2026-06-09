@@ -16,21 +16,21 @@ if(userArea){
 
   // sin login
   if(!loggedUser){
-    userArea.innerHTML = ` <a href="./login.html" class="login-button">Iniciar sesión</a> `;
+    userArea.innerHTML = `<a href="./login.html" class="login-button">Iniciar sesión</a>`;
   }
 
   // con login
   else{
-    const dashboardButton = "";
+    let dashboardButton = "";
 
     // admin
     if(loggedUser === "admin"){
-      dashboardButton = <a href="./admin.html">Panel Admin</a>;
+      dashboardButton = `<a href="./admin.html">Panel Admin</a>`;
     }
 
     // cliente
     else{
-      dashboardButton = <a href="./client-dashboard.html">Mi Panel</a>;
+      dashboardButton = `<a href="./client-dashboard.html">Mi Panel</a>`;
     }
 
     // menú

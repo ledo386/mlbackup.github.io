@@ -420,6 +420,7 @@ footer p{
 
 footer a, header a{
   color:var(--primary);
+  opacity:0.8;
   text-decoration:none;
   font-weight:bold;
 }

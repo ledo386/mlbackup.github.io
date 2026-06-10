@@ -425,6 +425,17 @@ footer a, header a{
   font-weight:bold;
 }
 
+.footer-grid{
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 40px;
+  align-items: start;
+}
+
+.footer-grid h3{
+  margin-bottom: 10px;
+}
+
 .sec-button{
   display:block;
   width:75%;

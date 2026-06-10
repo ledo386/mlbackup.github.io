@@ -167,24 +167,6 @@ section{
   cursor:pointer;
 }
 
-.featured{
-  color:white;
-}
-
-.featured button{
-  background:white;
-  color:#2563eb;
-  font-weight:bold;
-}
-
-.popular{
-  background:var(--card);
-  color:#2563eb;
-  padding:5px 15px;
-  border-radius:20px;
-  font-size:14px;
-}
-
 .about-grid{
   display:grid;
   grid-template-columns:1fr 1fr;

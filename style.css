@@ -418,9 +418,15 @@ footer p{
   font-size:15px;
 }
 
-footer a, header a{
+footer a{
   color:var(--primary);
-  opacity:0.8;
+  text-decoration:none;
+  font-weight:bold;
+}
+
+header a{
+  color:var(--primary);
+  opacity:0.9;
   text-decoration:none;
   font-weight:bold;
 }

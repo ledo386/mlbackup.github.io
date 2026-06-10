@@ -222,7 +222,7 @@ footer{
   gap:40px;
 }
 
-footer a{
+footer a, header a{
   color:#cbd5e1;
   text-decoration:none;
 }

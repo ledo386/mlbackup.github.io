@@ -100,6 +100,18 @@ function loadHistory() {
 }
 
 // ALERTAS
+function addAlert(message){
+  const targetUser = localStorage.getItem("managedUser") || localStorage.getItem("loggedUser");
+  const alerts = JSON.parse(localStorage.getItem("alerts_" + targetUser)) || [];
+
+  alerts.push({
+    message:message,
+    date:new Date().toLocaleString()
+  });
+
+  localStorage.setItem("alerts_" + targetUser,JSON.stringify(alerts));
+}
+
 function loadAlerts() {
   const container = document.getElementById("alertsContainer");
   if (!container) return;
@@ -108,7 +120,6 @@ function loadAlerts() {
 
   alerts.reverse().forEach(alert => {
     container.innerHTML += `
-
       <div class="alert-box">
         <strong>${alert.message}</strong>
         <p>${alert.date}</p>

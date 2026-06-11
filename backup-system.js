@@ -17,6 +17,7 @@ function runBackup(){
   addAlert("Copia manual completada");
   loadHistory();
   alert("Copia de seguridad completada.");
+  loadAlerts();
 }
 
 // BACKUP AUTOMÁTICO
@@ -34,6 +35,7 @@ function automaticBackup(){
   loadStorage();
   addAlert("Backup automático ejecutado");
   loadHistory();
+  loadAlerts();
 }
 
 // cada 15 segundos
@@ -52,6 +54,8 @@ function restoreBackup(){
   });
 
   localStorage.setItem("restores_" + backupTargetUser, JSON.stringify(restores));
+  loadHistory();
   addAlert("Sistema restaurado correctamente");
   alert("Datos restaurados correctamente.");
+  loadAlerts();
 }

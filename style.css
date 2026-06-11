@@ -179,12 +179,6 @@ section{
   gap:20px;
 }
 
-.contact-box{
-  background:var(--card);
-  padding:60px;
-  border-radius:30px;
-}
-
 form{
   display:grid;
   gap:20px;

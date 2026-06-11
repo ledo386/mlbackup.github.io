@@ -91,13 +91,6 @@ nav a{
   color:white;
 }
 
-.card{
-  background:var(--secondary);
-  padding:25px;
-  border-radius:20px;
-  margin-bottom:20px;
-}
-
 section{
   padding:120px 0;
 }

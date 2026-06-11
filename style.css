@@ -54,12 +54,7 @@ nav a{
   display:flex;
   align-items:center;
   padding-top:120px;
-}
-
-.inic-content{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:60px;
+  margin-right:500px;
 }
 
 .tag{

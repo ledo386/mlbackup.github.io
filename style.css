@@ -49,14 +49,14 @@ nav a{
   border-radius:12px;
 }
 
-.prin{
+.inic{
   min-height:100vh;
   display:flex;
   align-items:center;
   padding-top:120px;
 }
 
-.prin-content{
+.inic-content{
   display:grid;
   grid-template-columns:1fr 1fr;
   gap:60px;
@@ -68,7 +68,7 @@ nav a{
   margin-bottom:15px;
 }
 
-.prin h2{
+.inic h2{
   font-size:55px;
   margin-bottom:20px;
 }
@@ -93,11 +93,6 @@ nav a{
 .primary{
   background:var(--primary);
   color:white;
-}
-
-.secondary{
-  border:1px solid #cccccc;
-  color:var(--text);
 }
 
 .card{

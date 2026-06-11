@@ -100,12 +100,6 @@ nav a{
   color:var(--text);
 }
 
-.prin-card{
-  background:var(--card);
-  padding:40px;
-  border-radius:30px;
-}
-
 .card{
   background:var(--secondary);
   padding:25px;

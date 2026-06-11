@@ -230,6 +230,10 @@ button, .btn{
   width:100%;
 }
 
+.login-box h2{
+  margin-bottom:20px;
+}
+
 .single-plan-card h1{
   font-size:50px;
   margin-bottom:20px;

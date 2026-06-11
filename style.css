@@ -401,7 +401,7 @@ footer a{
   font-weight:bold;
 }
 
-header{
+header, header a, header button{
   color:var(--text);
   opacity:0.9;
   text-decoration:none;

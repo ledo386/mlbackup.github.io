@@ -402,6 +402,7 @@ footer a{
 }
 
 header, header a, header button{
+  font-family:Arial, sans-serif;
   color:var(--text);
   opacity:0.9;
   text-decoration:none;

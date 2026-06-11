@@ -49,14 +49,14 @@ nav a{
   border-radius:12px;
 }
 
-.hero{
+.prin{
   min-height:100vh;
   display:flex;
   align-items:center;
   padding-top:120px;
 }
 
-.hero-content{
+.prin-content{
   display:grid;
   grid-template-columns:1fr 1fr;
   gap:60px;
@@ -68,7 +68,7 @@ nav a{
   margin-bottom:15px;
 }
 
-.hero h2{
+.prin h2{
   font-size:55px;
   margin-bottom:20px;
 }

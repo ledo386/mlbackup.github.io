@@ -131,13 +131,13 @@ section{
   font-size:40px;
 }
 
-.services-grid, .plans-grid{
+.plans-grid{
   display:grid;
   grid-template-columns:repeat(3, 1fr);
   gap:30px;
 }
 
-.service-box, .plan-card, .stat-box{
+.plan-card, .stat-box{
   background:var(--card);
   padding:35px;
   border-radius:25px;

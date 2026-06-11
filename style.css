@@ -54,7 +54,8 @@ nav a{
   display:flex;
   align-items:center;
   padding-top:120px;
-  margin-right:1250px;
+  margin-right:450px;
+  margin-left:450px;
 }
 
 .tag{

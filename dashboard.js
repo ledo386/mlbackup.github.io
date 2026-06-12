@@ -2,22 +2,26 @@
 const dashboardUser = localStorage.getItem("managedUser") || localStorage.getItem("loggedUser");
 
 // CARGAR USUARIOS
-function loadUsers() {
+function loadUsers(){
   const table = document.getElementById("usersTable");
-  if (!table) return;
+  
+  if (!table){
+    return;
+  }
+  
   table.innerHTML = "";
 
-  for (let i = 0; i < localStorage.length; i++) {
+  for(let i = 0; i < localStorage.length; i++){
     const key = localStorage.key(i);
 
-    if (key === "loggedUser" || key === "theme" || key === "managedUser") {
+    if(key === "loggedUser" || key === "theme" || key === "managedUser"){
       continue;
     }
 
     try {
       const user = JSON.parse(localStorage.getItem(key));
 
-      if (user && user.username) {
+      if(user && user.username){
         table.innerHTML += `
 
           <tr>
@@ -34,20 +38,20 @@ function loadUsers() {
           </tr>`;
       }
 
-    } catch (error) {
+    } catch(error){
       console.log("Error");
     }
   }
 }
 
 // GESTIONAR USUARIO
-function manageUser(username) {
+function manageUser(username){
   localStorage.setItem("managedUser", username);
   window.location.href = "./dashboard.html";
 }
 
 // HISTORIAL
-function loadHistory() {
+function loadHistory(){
   const table = document.getElementById("historyTable");
   if (!table) return;
 
@@ -111,7 +115,7 @@ function addAlert(message){
   localStorage.setItem("alerts_" + dashboardUser,JSON.stringify(alerts));
 }
 
-function loadAlerts() {
+function loadAlerts(){
   const container = document.getElementById("alertsContainer");
   if (!container) return;
   const alerts = JSON.parse(localStorage.getItem("alerts_" + dashboardUser)) || [];
@@ -128,26 +132,28 @@ function loadAlerts() {
 }
 
 // ALMACENAMIENTO
-function loadStorage() {
+function loadStorage(){
   const usedElement = document.getElementById("storageUsed");
   const limitElement = document.getElementById("storageLimit");
   
-  if (!usedElement || !limitElement) {
+  if(!usedElement || !limitElement){
     return;
   }
 
   // usuario
   const userData = JSON.parse(localStorage.getItem(dashboardUser));
-  if (!userData) return;
-
+  if(!userData){
+    return;
+  }
+  
   // límite según plan
   let limitGB = 500;
 
-  if (userData.plan === "Plan Profesional") {
+  if(userData.plan === "Plan Profesional"){
     limitGB = 5120;
   }
 
-  if (userData.plan === "Plan Empresarial") {
+  if(userData.plan === "Plan Empresarial"){
     limitGB = Infinity;
   }
 
@@ -165,13 +171,10 @@ function loadStorage() {
   // actualizar texto
   usedElement.innerHTML = usedGB + " GB";
 
-  if (limitGB === Infinity) {
+  if(limitGB === Infinity){
     limitElement.innerHTML = "/ Ilimitado";
-    fillElement.style.width = "35%";
-  } else {
+  }else{
     limitElement.innerHTML = "/ " + limitGB + " GB";
-    const percentage = (usedGB / limitGB) * 100;
-    fillElement.style.width = percentage + "%";
   }
 }
 

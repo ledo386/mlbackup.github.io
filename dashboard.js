@@ -131,9 +131,8 @@ function loadAlerts() {
 function loadStorage() {
   const usedElement = document.getElementById("storageUsed");
   const limitElement = document.getElementById("storageLimit");
-  const fillElement = document.getElementById("storageFill");
-
-  if (!usedElement || !limitElement || !fillElement) {
+  
+  if (!usedElement || !limitElement) {
     return;
   }
 

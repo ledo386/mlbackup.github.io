@@ -101,15 +101,14 @@ function loadHistory() {
 
 // ALERTAS
 function addAlert(message){
-  const targetUser = localStorage.getItem("managedUser") || localStorage.getItem("loggedUser");
-  const alerts = JSON.parse(localStorage.getItem("alerts_" + targetUser)) || [];
+  const alerts = JSON.parse(localStorage.getItem("alerts_" + dashboardUser)) || [];
 
   alerts.push({
     message:message,
     date:new Date().toLocaleString()
   });
 
-  localStorage.setItem("alerts_" + targetUser,JSON.stringify(alerts));
+  localStorage.setItem("alerts_" + dashboardUser,JSON.stringify(alerts));
 }
 
 function loadAlerts() {
@@ -174,6 +173,66 @@ function loadStorage() {
     const percentage = (usedGB / limitGB) * 100;
     fillElement.style.width = percentage + "%";
   }
+}
+
+// BACKUP MANUAL
+function runBackup(){
+  const backups = JSON.parse(localStorage.getItem("backups_" + dashboardUser)) || [];
+
+  const newBackup = {
+    date: new Date().toLocaleString(),
+    type: "Manual",
+    status: "Completado",
+    size: Math.floor(Math.random()*5000) + " MB"
+  };
+
+  backups.push(newBackup);
+  localStorage.setItem("backups_" + dashboardUser, JSON.stringify(backups));
+  loadStorage();
+  addAlert("Copia manual completada");
+  loadHistory();
+  alert("Copia de seguridad completada.");
+  loadAlerts();
+}
+
+// BACKUP AUTOMÁTICO
+function automaticBackup(){
+  const backups = JSON.parse(localStorage.getItem("backups_" + dashboardUser)) || [];
+
+  backups.push({
+    date: new Date().toLocaleString(),
+    type: "Automático",
+    status: "Completado",
+    size: Math.floor(Math.random()*5000) + " MB"
+  });
+
+  localStorage.setItem("backups_" + dashboardUser, JSON.stringify(backups));
+  loadStorage();
+  addAlert("Backup automático ejecutado");
+  loadHistory();
+  loadAlerts();
+}
+
+// cada 15 segundos
+setInterval(() => {
+  automaticBackup();
+}, 15000);
+
+// RESTAURAR DATOS
+function restoreBackup(){
+
+  const restores = JSON.parse(localStorage.getItem("restores_" + dashboardUser)) || [];
+
+  restores.push({
+    date: new Date().toLocaleString(),
+    status: "Restauración completada"
+  });
+
+  localStorage.setItem("restores_" + dashboardUser, JSON.stringify(restores));
+  loadHistory();
+  addAlert("Sistema restaurado correctamente");
+  alert("Datos restaurados correctamente.");
+  loadAlerts();
 }
 
 loadUsers();

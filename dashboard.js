@@ -104,8 +104,8 @@ function addAlert(message){
   const alerts = JSON.parse(localStorage.getItem("alerts_" + dashboardUser)) || [];
 
   alerts.push({
-    message:message,
-    date:new Date().toLocaleString()
+    message: message,
+    date: new Date().toLocaleString()
   });
 
   localStorage.setItem("alerts_" + dashboardUser,JSON.stringify(alerts));
@@ -119,6 +119,7 @@ function loadAlerts() {
 
   alerts.reverse().forEach(alert => {
     container.innerHTML += `
+    
       <div class="alert-box">
         <strong>${alert.message}</strong>
         <p>${alert.date}</p>
@@ -220,7 +221,6 @@ setInterval(() => {
 
 // RESTAURAR DATOS
 function restoreBackup(){
-
   const restores = JSON.parse(localStorage.getItem("restores_" + dashboardUser)) || [];
 
   restores.push({

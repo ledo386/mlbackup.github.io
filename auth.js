@@ -35,6 +35,7 @@ if(userArea){
 
     // menú
     userArea.innerHTML = `
+    
       <div class="user-menu">
 
         <div class="user-profile">
@@ -92,106 +93,51 @@ const loginForm = document.getElementById("loginForm");
 if(loginForm){
   loginForm.addEventListener("submit", function(e){
     e.preventDefault();
-
-    const username =
-      document.getElementById("loginUsername").value;
-
-    const password =
-      document.getElementById("loginPassword").value;
+    const username = document.getElementById("loginUsername").value;
+    const password = document.getElementById("loginPassword").value;
 
     // ADMIN
-    if(
-      username === "admin" &&
-      password === "123"
-    ){
-
-      localStorage.setItem(
-        "loggedUser",
-        "admin"
-      );
+    if(username === "admin" && password === "123"){
+      localStorage.setItem("loggedUser","admin");
 
       // limpiar usuario gestionado anterior
-      localStorage.removeItem(
-        "managedUser"
-      );
-
-      window.location.href =
-        "./admin.html";
-
+      localStorage.removeItem("managedUser");
+      window.location.href = "./admin.html";
       return;
     }
 
     // CLIENTE
-    const user =
-      JSON.parse(
-        localStorage.getItem(username)
-      );
+    const user = JSON.parse(localStorage.getItem(username));
 
-    if(
-      user &&
-      user.password === password
-    ){
-
-      localStorage.setItem(
-        "loggedUser",
-        username
-      );
+    if(user && user.password === password){
+      localStorage.setItem("loggedUser",username);
 
       // limpiar managedUser
-      localStorage.removeItem(
-        "managedUser"
-      );
-
-      alert(
-        "Inicio de sesión correcto."
-      );
+      localStorage.removeItem("managedUser");
+      alert("Inicio de sesión correcto.");
 
       // verificar plan contratado
-      if(
-        user.plan &&
-        user.plan !== "Ninguno"
-      ){
+      if(user.plan && user.plan !== "Ninguno"){
 
         // usuario con plan
-        window.location.href =
-          "./client-dashboard.html";
-
+        window.location.href = "./client-dashboard.html";
       }else{
 
         // usuario sin plan
-        alert(
-          "Debes contratar un plan para acceder al panel."
-        );
-
-        window.location.href =
-          "./index.html#planes";
+        alert("Debes contratar un plan para acceder al panel.");
+        window.location.href = "./index.html#planes";
       }
-
+      
     }else{
-
-      alert(
-        "Usuario o contraseña incorrectos."
-      );
-
+      alert("Usuario o contraseña incorrectos.");
     }
   });
 }
 
 // LOGOUT
 function logout(){
-
-  localStorage.removeItem(
-    "loggedUser"
-  );
-
-  localStorage.removeItem(
-    "managedUser"
-  );
-
-  alert(
-    "Sesión cerrada."
-  );
-
-  window.location.href =
-    "./index.html";
+  localStorage.removeItem("loggedUser");
+  localStorage.removeItem("managedUser");
+  alert("Sesión cerrada.");
+  window.location.href = "./index.html";
 }
